@@ -3,26 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P. Varshith | Portfolio</title>
+<title>PURNESH | Student Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
 body{
 font-family:'Poppins',sans-serif;
-background:#000;
-color:#00ffff;
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+color:white;
 overflow-x:hidden;
 }
 
-#particles-js{
+/* Animated Glow */
+body::before{
+content:"";
 position:fixed;
-width:100%;
-height:100%;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#00f5ff55,transparent);
+top:-100px;
+left:-100px;
+animation:moveGlow 10s infinite alternate ease-in-out;
 z-index:-1;
+}
+
+@keyframes moveGlow{
+0%{transform:translate(0,0);}
+100%{transform:translate(300px,200px);}
 }
 
 /* NAVBAR */
@@ -32,32 +42,31 @@ width:100%;
 padding:20px 60px;
 display:flex;
 justify-content:space-between;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-border-bottom:1px solid #00ffff;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.2);
 z-index:1000;
 }
 
 nav h2{
-font-family:'Orbitron',sans-serif;
-text-shadow:0 0 10px #00ffff;
+font-weight:700;
+letter-spacing:2px;
 }
 
 nav ul{
 list-style:none;
 display:flex;
-gap:25px;
+gap:30px;
 }
 
 nav a{
 text-decoration:none;
-color:#00ffff;
+color:white;
 transition:0.3s;
 }
 
 nav a:hover{
-color:#fff;
-text-shadow:0 0 10px #00ffff;
+color:#00f5ff;
 }
 
 /* HERO */
@@ -67,16 +76,15 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
+padding:0 20px;
 }
 
 .hero-box{
-background:rgba(0,255,255,0.05);
+background:rgba(255,255,255,0.08);
 padding:60px;
 border-radius:20px;
-border:1px solid #00ffff;
-backdrop-filter:blur(20px);
-box-shadow:0 0 40px #00ffff;
+backdrop-filter:blur(30px);
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
 animation:float 4s ease-in-out infinite;
 }
 
@@ -85,20 +93,19 @@ animation:float 4s ease-in-out infinite;
 50%{transform:translateY(-15px)}
 }
 
-.glow-name{
-font-size:50px;
-font-family:'Orbitron',sans-serif;
-text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;
+.hero h1{
+font-size:48px;
+background:linear-gradient(90deg,#00f5ff,#ff00ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.typing{
-margin-top:15px;
-font-size:22px;
-color:#00ffcc;
-height:30px;
+.hero p{
+margin-top:10px;
+opacity:0.9;
 }
 
-/* SECTIONS */
+/* SECTION */
 section{
 padding:120px 10%;
 }
@@ -106,22 +113,24 @@ padding:120px 10%;
 h2{
 text-align:center;
 margin-bottom:40px;
-font-family:'Orbitron',sans-serif;
-color:#00ffcc;
+font-size:32px;
+background:linear-gradient(90deg,#00f5ff,#ff00ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .card{
-background:rgba(0,255,255,0.05);
+background:rgba(255,255,255,0.08);
 padding:25px;
 border-radius:15px;
 margin-bottom:20px;
-border:1px solid #00ffff;
+backdrop-filter:blur(20px);
 transition:0.4s;
 }
 
 .card:hover{
-transform:rotateY(8deg) rotateX(8deg) translateY(-10px);
-box-shadow:0 0 30px #00ffff;
+transform:translateY(-10px);
+box-shadow:0 10px 30px rgba(0,255,255,0.4);
 }
 
 .grid{
@@ -130,140 +139,156 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
+/* Skill Badge */
+.badge{
+display:inline-block;
+padding:8px 15px;
+margin:8px;
+border-radius:30px;
+background:linear-gradient(45deg,#00f5ff,#ff00ff);
+font-size:14px;
+font-weight:600;
+}
+
+/* Footer */
 footer{
 text-align:center;
 padding:30px;
-border-top:1px solid #00ffff;
+border-top:1px solid rgba(255,255,255,0.2);
+opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div id="particles-js"></div>
-
 <nav>
-<h2>Varshith</h2>
+<h2>PURNESH</h2>
 <ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#objective">Objective</a></li>
+<li><a href="#profile">Profile</a></li>
 <li><a href="#education">Education</a></li>
 <li><a href="#skills">Skills</a></li>
-<li><a href="#strengths">Strengths</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#softskills">Soft Skills</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
-<!-- HOME -->
-<section class="hero" id="home">
+<section class="hero">
 <div class="hero-box">
-<h1 class="glow-name">P. Varshith</h1>
-<h2 class="typing"></h2>
-<p style="margin-top:20px;color:#aaa;">
-Aspiring Software Developer | CSE Student
-</p>
+<h1>PURNESH</h1>
+<p>Designation: Student</p>
+<p>Email: pulikantipurnesh@gmail.com</p>
+<p>Contact: 9764245533</p>
 </div>
 </section>
 
-<!-- OBJECTIVE -->
-<section id="objective">
-<h2>Career Objective</h2>
+<section id="profile">
+<h2>Profile Summary</h2>
 <div class="card">
-Seeking a challenging position where I can use my technical and soft skills to develop new programming solutions and contribute to the growth of the organization.
+Motivated B.Tech student with a strong academic background and a CGPA of 9.5.
+Passionate about Full Stack Development with knowledge in frontend, backend, and cloud technologies.
+Eager to apply technical skills in real-world projects.
 </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
 <h2>Education</h2>
 <div class="grid">
-<div class="card">
-B.Tech – CSE<br>
-SRGEC Gudlavalleru<br>
-Pursuing
-</div>
-<div class="card">
-Intermediate – MPC<br>
-Narayana Jr College, Vijayawada<br>
-Year: 2025 | 92%
-</div>
-<div class="card">
-SSC – HMK School<br>
-Year: 2023 | 90%
-</div>
+<div class="card">B.Tech – SRGEC – 9.5 CGPA</div>
+<div class="card">Intermediate – Sri Chaitanya Junior College – 98.6%</div>
+<div class="card">10th – Sri Chaitanya School – 94.8%</div>
 </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
 <h2>Technical Skills</h2>
-<div class="grid">
-<div class="card">C Language</div>
-<div class="card">MS Office</div>
-</div>
-</section>
-
-<!-- STRENGTHS -->
-<section id="strengths">
-<h2>Strengths</h2>
-<div class="grid">
-<div class="card">Self Confidence</div>
-<div class="card">Communication Skills</div>
-</div>
-</section>
-
-<!-- PERSONAL DETAILS -->
-<section>
-<h2>Personal Details</h2>
 <div class="card">
-DOB: 09-03-2008<br><br>
-Nationality: Indian<br><br>
-Gender: Male<br><br>
-Languages Known: English, Telugu<br><br>
-Hobbies: Playing games, Listening songs
+<strong>Programming:</strong><br>
+<div class="badge">C</div>
+<div class="badge">Python</div>
+<div class="badge">JavaScript</div>
+<br><br>
+<strong>Web Technologies:</strong><br>
+<div class="badge">HTML</div>
+<div class="badge">CSS</div>
+<div class="badge">JavaScript</div>
+<br><br>
+<strong>Frontend:</strong><br>
+<div class="badge">React</div>
+<div class="badge">Angular</div>
+<br><br>
+<strong>Backend:</strong><br>
+<div class="badge">Node.js</div>
+<div class="badge">Express.js</div>
+<div class="badge">Django</div>
+<div class="badge">Flask</div>
+<div class="badge">FastAPI</div>
+<br><br>
+<strong>Servers:</strong><br>
+<div class="badge">Apache</div>
+<div class="badge">Nginx</div>
+<br><br>
+<strong>Cloud & DevOps:</strong><br>
+<div class="badge">AWS</div>
+<div class="badge">Docker</div>
+<div class="badge">Kubernetes</div>
 </div>
 </section>
 
-<!-- CONTACT -->
+<section id="projects">
+<h2>Projects</h2>
+<div class="card">
+<strong>Student Management Web Application:</strong><br>
+Developed a full-stack web application using React (frontend) and Node.js with Express (backend) to manage student records.
+</div>
+
+<div class="card">
+<strong>Task Management System:</strong><br>
+Built a web application using Django and integrated REST APIs for task tracking and management.
+</div>
+</section>
+
+<section id="softskills">
+<h2>Soft Skills</h2>
+<div class="grid">
+<div class="card">Effective Communicator</div>
+<div class="card">Leadership & Management Skills</div>
+<div class="card">Team Collaboration</div>
+</div>
+</section>
+
+<section>
+<h2>Hobbies</h2>
+<div class="grid">
+<div class="card">Music</div>
+<div class="card">Dance</div>
+<div class="card">Football</div>
+</div>
+</section>
+
+<section>
+<h2>Languages Known</h2>
+<div class="grid">
+<div class="card">English</div>
+<div class="card">Telugu</div>
+<div class="card">Hindi</div>
+</div>
+</section>
+
 <section id="contact">
 <h2>Contact</h2>
 <div class="card">
-📧 Email: pulapakavarshit@gmail.com<br><br>
-📱 Phone: 9160827784<br><br>
-📍 Address: 2-31, Bobbili, Vizianagaram District – 535558
+Email: pulikantipurnesh@gmail.com<br>
+Contact: 9764245533<br>
+LinkedIn: xxxxxxxxx<br>
+GitHub: xxxxxxxxx
 </div>
 </section>
 
 <footer>
-© 2026 P. Varshith | Portfolio
+© 2026 PURNESH | Student Portfolio
 </footer>
-
-<script>
-const words=["CSE Student","Aspiring Developer","Problem Solver"];
-let i=0,j=0,current="",letter="";
-(function type(){
-if(i===words.length){i=0;}
-current=words[i];
-letter=current.slice(0,++j);
-document.querySelector(".typing").textContent=letter;
-if(letter.length===current.length){
-setTimeout(()=>{j=0;i++;},1000);
-}
-setTimeout(type,100);
-})();
-
-particlesJS("particles-js",{
-particles:{
-number:{value:80},
-color:{value:"#00ffff"},
-shape:{type:"circle"},
-opacity:{value:0.5},
-size:{value:3},
-line_linked:{enable:true,color:"#00ffff"},
-move:{enable:true,speed:2}
-}
-});
-</script>
 
 </body>
 </html>
