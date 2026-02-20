@@ -1,282 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>N. Poorna Prabath | Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N. Sri Hari Rao | Wedding & Event Productions</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-        /* NAVBAR */
-        nav {
-            position: fixed;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
+body{
+    font-family:'Poppins', sans-serif;
+    background:#000;
+    color:white;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+nav h2{
+    font-family:'Cinzel', serif;
+    color:#d4af37;
+    letter-spacing:3px;
+}
 
-        nav a:hover {
-            color: #00c6ff;
-        }
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
 
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            animation: fadeIn 2s ease-in-out;
-        }
+nav a:hover{
+    color:#d4af37;
+}
 
-        .typing {
-            font-size: 24px;
-            color: #00c6ff;
-            margin: 10px 0;
-        }
+/* HERO */
+.hero{
+    height:100vh;
+    background:url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
 
-        section {
-            padding: 100px 10%;
-        }
+.hero::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.75);
+}
 
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-        }
+.hero-content{
+    position:relative;
+    z-index:2;
+}
 
-        .card {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 12px;
-            transition: 0.4s;
-        }
+.hero h1{
+    font-family:'Cinzel', serif;
+    font-size:60px;
+    color:#d4af37;
+    letter-spacing:3px;
+    animation:fadeUp 2s ease;
+}
 
-        .card:hover {
-            transform: scale(1.05);
-        }
+.hero p{
+    margin-top:20px;
+    font-size:20px;
+    letter-spacing:3px;
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-        }
+/* SECTION */
+section{
+    padding:100px 12%;
+}
 
-        .skill {
-            background: #00c6ff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
+h2{
+    text-align:center;
+    font-family:'Cinzel', serif;
+    font-size:40px;
+    color:#d4af37;
+    margin-bottom:50px;
+}
 
-        .skill:hover {
-            background: #0072ff;
-            transform: translateY(-10px);
-        }
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
 
-        ul {
-            line-height: 1.8;
-        }
+.service-card{
+    background:#111;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.4s;
+    border:1px solid #222;
+}
 
-        .contact {
-            text-align: center;
-        }
+.service-card:hover{
+    transform:translateY(-10px);
+    border-color:#d4af37;
+}
 
-        /* SCROLL REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: 1s;
-        }
+.service-card h3{
+    color:#d4af37;
+    margin-bottom:15px;
+}
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* GALLERY */
+.gallery-category{
+    margin-bottom:70px;
+}
 
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
 
-        /* RESPONSIVE */
-        @media(max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.4s;
+    filter:brightness(75%);
+}
 
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+.gallery img:hover{
+    transform:scale(1.08);
+    filter:brightness(100%);
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    font-size:20px;
+    line-height:2.2;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#111;
+    color:#888;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+    nav{
+        padding:20px;
+    }
+    .hero h1{
+        font-size:35px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-    <h3>Prabath</h3>
+    <h2>N. Sri Hari Rao</h2>
     <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#profile">Profile</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#strengths">Strengths</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
 
 <!-- HERO -->
-<section id="home" class="hero">
-    <h1>N. Poorna Prabath</h1>
-    <div class="typing"></div>
-    <p>Email: poornaprabath2008@gmail.com</p>
-    <p>Phone: 9494244759</p>
-    <p>
-        <a href="https://www.linkedin.com/in/poorna-prabath-neelapala-33205b3a2" target="_blank" style="color:#00c6ff;">
-            LinkedIn Profile
-        </a>
-    </p>
-</section>
-
-<!-- PROFILE -->
-<section id="profile" class="reveal">
-    <h2>Profile Summary</h2>
-    <div class="card">
-        Enthusiastic and motivated Junior Software Developer with strong foundational knowledge in C, C++, Python, and Java.
-        Skilled in web technologies including HTML, CSS, and JavaScript.
-        Possess hands-on experience through academic labs and coding practice.
-        Seeking an opportunity to contribute technical skills and grow in a professional environment.
+<section class="hero">
+    <div class="hero-content">
+        <h1>Wedding & Event Productions</h1>
+        <p>Photography | Videography | LED Walls | Net Live</p>
     </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education" class="reveal">
-    <h2>Education</h2>
-    <div class="card">
-        <strong>B.Tech – Seshadri Rao Gudlavalleru Engineering College</strong><br>
-        CGPA: 8.18
-    </div>
-    <div class="card">
-        <strong>Intermediate (CBSE) – V.S. St. Johns Hr Sec School, Gannavaram</strong><br>
-        Percentage: 66.8%
-    </div>
-    <div class="card">
-        <strong>10th Class – V.S. St. Johns Hr Sec School, Gannavaram</strong><br>
-        Percentage: 69.8%
+<!-- SERVICES -->
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+
+        <div class="service-card">
+            <h3>Wedding Photography</h3>
+            <p>Traditional & Candid wedding photography capturing beautiful moments.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>Cinematic Videography</h3>
+            <p>High-quality cinematic wedding & event videos with professional editing.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>LED Wall Setup</h3>
+            <p>Large LED screens for live display during functions & events.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>Net Live Streaming</h3>
+            <p>Live streaming of weddings & events for relatives worldwide.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>Event Coverage</h3>
+            <p>Complete event photography & videography coverage with professional team.</p>
+        </div>
+
     </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="reveal">
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-        <div class="skill">C</div>
-        <div class="skill">C++</div>
-        <div class="skill">Python</div>
-        <div class="skill">Java</div>
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-    </div>
-</section>
+<!-- GALLERY -->
+<section id="gallery">
+    <h2>Our Work</h2>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="reveal">
-    <h2>Hands-On Experience</h2>
-    <div class="card">
-        <ul>
-            <li>Practiced programming concepts through academic lab sessions</li>
-            <li>Developed basic console-based applications using C, C++, Python, and Java</li>
-            <li>Created static web pages using HTML, CSS, and JavaScript</li>
-            <li>Strengthened logical and problem-solving skills through regular coding practice</li>
-        </ul>
+    <div class="gallery-category">
+        <h3 style="color:#d4af37;margin-bottom:20px;">Wedding Moments</h3>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde">
+        </div>
     </div>
-</section>
 
-<!-- STRENGTHS -->
-<section id="strengths" class="reveal">
-    <h2>Strengths</h2>
-    <div class="card">
-        <ul>
-            <li>Quick Learner</li>
-            <li>Logical Thinking</li>
-            <li>Adaptability</li>
-            <li>Team Collaboration</li>
-        </ul>
+    <div class="gallery-category">
+        <h3 style="color:#d4af37;margin-bottom:20px;">LED & Event Setup</h3>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30">
+            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3">
+        </div>
     </div>
+
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal contact">
-    <h2>Contact</h2>
-    <p>Email: poornaprabath2008@gmail.com</p>
-    <p>Phone: 9494244759</p>
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+        📞 Phone: 9848346965 <br>
+        📍 Address: Bhyravapatnam, Eluru District, Andhra Pradesh <br>
+        📷 Available for Weddings, Events & Live Productions
+    </div>
 </section>
 
-<script>
-    // Typing Effect
-    const text = "Junior Software Developer";
-    let i = 0;
-    function typing() {
-        if (i < text.length) {
-            document.querySelector(".typing").innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, 100);
-        }
-    }
-    typing();
-
-    // Scroll Reveal
-    window.addEventListener("scroll", function() {
-        const reveals = document.querySelectorAll(".reveal");
-        reveals.forEach(reveal => {
-            const windowHeight = window.innerHeight;
-            const revealTop = reveal.getBoundingClientRect().top;
-            if (revealTop < windowHeight - 100) {
-                reveal.classList.add("active");
-            }
-        });
-    });
-</script>
+<footer>
+    © 2026 N. Sri Hari Rao Wedding & Event Productions | All Rights Reserved
+</footer>
 
 </body>
 </html>
