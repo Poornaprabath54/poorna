@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>N. Poorna Prabath | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .typing {
+            font-size: 24px;
+            color: #00c6ff;
+            margin: 10px 0;
+        }
+
+        section {
+            padding: 100px 10%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            background: #00c6ff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #0072ff;
+            transform: translateY(-10px);
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h3>Prabath</h3>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#strengths">Strengths</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <h1>N. Poorna Prabath</h1>
+    <div class="typing"></div>
+    <p>Email: poornaprabath2008@gmail.com</p>
+    <p>Phone: 9494244759</p>
+    <p>
+        <a href="https://www.linkedin.com/in/poorna-prabath-neelapala-33205b3a2" target="_blank" style="color:#00c6ff;">
+            LinkedIn Profile
+        </a>
+    </p>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="reveal">
+    <h2>Profile Summary</h2>
+    <div class="card">
+        Enthusiastic and motivated Junior Software Developer with strong foundational knowledge in C, C++, Python, and Java.
+        Skilled in web technologies including HTML, CSS, and JavaScript.
+        Possess hands-on experience through academic labs and coding practice.
+        Seeking an opportunity to contribute technical skills and grow in a professional environment.
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="reveal">
+    <h2>Education</h2>
+    <div class="card">
+        <strong>B.Tech – Seshadri Rao Gudlavalleru Engineering College</strong><br>
+        CGPA: 8.18
+    </div>
+    <div class="card">
+        <strong>Intermediate (CBSE) – V.S. St. Johns Hr Sec School, Gannavaram</strong><br>
+        Percentage: 66.8%
+    </div>
+    <div class="card">
+        <strong>10th Class – V.S. St. Johns Hr Sec School, Gannavaram</strong><br>
+        Percentage: 69.8%
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill">C</div>
+        <div class="skill">C++</div>
+        <div class="skill">Python</div>
+        <div class="skill">Java</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="reveal">
+    <h2>Hands-On Experience</h2>
+    <div class="card">
+        <ul>
+            <li>Practiced programming concepts through academic lab sessions</li>
+            <li>Developed basic console-based applications using C, C++, Python, and Java</li>
+            <li>Created static web pages using HTML, CSS, and JavaScript</li>
+            <li>Strengthened logical and problem-solving skills through regular coding practice</li>
+        </ul>
+    </div>
+</section>
+
+<!-- STRENGTHS -->
+<section id="strengths" class="reveal">
+    <h2>Strengths</h2>
+    <div class="card">
+        <ul>
+            <li>Quick Learner</li>
+            <li>Logical Thinking</li>
+            <li>Adaptability</li>
+            <li>Team Collaboration</li>
+        </ul>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal contact">
+    <h2>Contact</h2>
+    <p>Email: poornaprabath2008@gmail.com</p>
+    <p>Phone: 9494244759</p>
+</section>
+
+<script>
+    // Typing Effect
+    const text = "Junior Software Developer";
+    let i = 0;
+    function typing() {
+        if (i < text.length) {
+            document.querySelector(".typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 100);
+        }
+    }
+    typing();
+
+    // Scroll Reveal
+    window.addEventListener("scroll", function() {
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(reveal => {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveal.getBoundingClientRect().top;
+            if (revealTop < windowHeight - 100) {
+                reveal.classList.add("active");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
