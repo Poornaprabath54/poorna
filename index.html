@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siris · 8.7 CGPA | ultra animated portfolio</title>
-    <!-- fonts & icons -->
+    <title>Poorna Prabath · software developer</title>
+    <!-- premium fonts & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,600;0,700;0,800;1,500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -17,127 +17,131 @@
         }
 
         body {
-            font-family: 'Archivo', sans-serif;
-            background: #0c0b17;
-            color: #f0ecff;
-            line-height: 1.5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0a0c12;
+            color: #eef2f6;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* BRAND NEW THEME — "NEON CHROME" with deep purple/orange contrasts */
-        .hyper-bg {
+        /* unique premium theme — "midnight aurora" with deep purples, blues and gold accents */
+        .prestige-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 70% 20%, #ff7b4a20, #0f0c2c 70%),
-                        radial-gradient(circle at 20% 80%, #3a2b6a, #0f0d1f 80%);
+            background: radial-gradient(circle at 20% 30%, #1a1f35, #0b0e17 70%),
+                        radial-gradient(circle at 80% 70%, #232842, #0a0d15 80%);
             z-index: -3;
-            animation: bgWarp 22s infinite alternate;
         }
 
-        @keyframes bgWarp {
-            0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-            100% { transform: scale(1.2) rotate(3deg); opacity: 1; }
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, rgba(100, 80, 200, 0.05) 0%, rgba(40, 160, 210, 0.05) 40%, rgba(180, 130, 250, 0.05) 80%);
+            filter: blur(60px);
+            animation: auroraMove 18s infinite alternate;
+            z-index: -2;
         }
 
-        .floating-grid {
+        @keyframes auroraMove {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.2); }
+        }
+
+        .micro-grid {
             position: fixed;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 140, 0, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(150, 0, 255, 0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: -2;
-            animation: gridShift 16s linear infinite;
+                linear-gradient(rgba(180, 160, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 160, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            animation: gridShift 30s linear infinite;
         }
 
         @keyframes gridShift {
             0% { transform: translateX(0) translateY(0); }
-            100% { transform: translateX(30px) translateY(20px); }
+            100% { transform: translateX(20px) translateY(15px); }
         }
 
-        .energy-orb {
-            position: fixed;
-            width: 70vmax;
-            height: 70vmax;
-            background: radial-gradient(circle at 40% 50%, #ff914d30, #aa4aff20, transparent 70%);
-            filter: blur(60px);
-            border-radius: 50%;
-            animation: orbSwirl 25s infinite alternate;
-            z-index: -1;
-        }
-
-        @keyframes orbSwirl {
-            0% { transform: translate(-20%, -20%) scale(1); }
-            100% { transform: translate(10%, 15%) scale(1.4); }
-        }
-
-        /* navigation — glass + flicker */
+        /* navigation — ultra premium */
         nav {
             position: fixed;
             width: 100%;
-            padding: 22px 70px;
+            padding: 25px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(8, 5, 25, 0.6);
+            background: rgba(8, 12, 25, 0.7);
             backdrop-filter: blur(25px);
-            border-bottom: 1px solid #ff9933;
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(210, 180, 140, 0.2);
             z-index: 100;
-            animation: navNeon 3s infinite alternate;
-        }
-
-        @keyframes navNeon {
-            0% { box-shadow: 0 0 10px #ff7b00, 0 0 20px #aa4aff; }
-            100% { box-shadow: 0 0 30px #ffaa33, 0 0 60px #9146ff; }
+            transition: 0.4s;
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 38px;
-            font-weight: 800;
-            background: linear-gradient(145deg, #ffb96a, #b47aff);
+            font-family: 'Prata', serif;
+            font-size: 34px;
+            font-weight: 400;
+            background: linear-gradient(135deg, #e6d5b8, #c6ad8a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 45px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #ffe5c4;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 60px;
-            transition: 0.2s;
-            border: 1px solid transparent;
+            color: #cfd9e6;
+            font-weight: 500;
+            font-size: 17px;
+            position: relative;
+            padding: 8px 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #c6ad8a, #e6d5b8);
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            border-color: #ffaa33;
-            background: rgba(255, 160, 0, 0.15);
-            box-shadow: 0 0 35px #ffae42;
-            transform: scale(1.15) translateY(-3px);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 50px;
+            padding: 0 60px;
             position: relative;
             z-index: 5;
         }
 
-        /* HERO — more animation */
+        /* HERO — professional & captivating */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -154,199 +158,182 @@
 
         .hero-text h1 {
             font-size: 80px;
-            font-weight: 800;
-            font-family: 'Syne', sans-serif;
-            line-height: 1;
-            background: linear-gradient(145deg, #ffb347, #ff8c42, #b882ff);
+            font-family: 'Prata', serif;
+            font-weight: 400;
+            line-height: 1.1;
+            background: linear-gradient(145deg, #ffffff, #e6d5b8, #b8c7e6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: textShake 3s infinite;
             margin-bottom: 20px;
+            animation: textReveal 1.8s;
         }
 
-        @keyframes textShake {
-            0%,100% { text-shadow: 0 0 15px #ffaa33, 0 0 40px #b47aff; transform: skew(0deg); }
-            33% { text-shadow: -5px 0 25px #ff7b00, 5px 0 35px #a642ff; transform: skew(2deg); }
-            66% { text-shadow: 5px 0 30px #ff9933, -5px 0 30px #cc66ff; transform: skew(-2deg); }
+        @keyframes textReveal {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .hero-sub {
-            font-size: 30px;
-            color: #ffcf9a;
+            font-size: 24px;
+            font-weight: 300;
+            color: #c6ad8a;
+            letter-spacing: 2px;
             margin-bottom: 25px;
-            animation: slideBlur 2s;
-        }
-
-        @keyframes slideBlur {
-            0% { filter: blur(10px); opacity: 0; transform: translateX(-40px); }
-            100% { filter: blur(0); opacity: 1; transform: translateX(0); }
+            animation: fadeSlide 1.8s 0.1s backwards;
         }
 
         .hero-desc {
-            font-size: 20px;
-            color: #d4c2ff;
+            font-size: 18px;
+            color: #a7b8cf;
             max-width: 600px;
             margin-bottom: 45px;
-            animation: slideBlur 2.2s;
+            line-height: 1.9;
+            animation: fadeSlide 1.8s 0.2s backwards;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .btn-group {
             display: flex;
             gap: 25px;
+            animation: fadeSlide 1.8s 0.3s backwards;
         }
 
         .btn {
             display: inline-block;
-            padding: 20px 50px;
-            border-radius: 100px;
-            font-weight: 800;
-            font-size: 20px;
+            padding: 18px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.4s;
             border: none;
-            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff8a5c, #b055ff);
-            color: white;
-            box-shadow: 0 0 30px #ff7b2b;
-            animation: btnPop 2s infinite;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #e6d5b8;
+            box-shadow: 0 15px 30px -10px #1e2a36;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(230, 213, 184, 0.2), transparent);
+            transition: 0.6s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 45px -8px #2c3e50;
+            color: #fff;
         }
 
         .btn-outline {
             background: transparent;
-            border: 3px solid #ffae42;
-            color: #ffcf9a;
+            border: 2px solid #c6ad8a;
+            color: #c6ad8a;
         }
 
         .btn-outline:hover {
-            background: #ff8a4d30;
-            border-color: #ffd966;
-            box-shadow: 0 0 60px #ffae42;
-            transform: scale(1.1) translateY(-8px);
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.1) translateY(-8px);
-            box-shadow: 0 0 70px #ff7b00, 0 0 120px #b266ff;
-        }
-
-        @keyframes btnPop {
-            0%,100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
+            background: rgba(198, 173, 138, 0.1);
+            border-color: #e6d5b8;
+            color: #e6d5b8;
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(198, 173, 138, 0.3);
         }
 
         .hero-image {
-            border-radius: 30% 70% 40% 60% / 50% 40% 60% 50%;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 50px 100px -20px #ff8a4d;
-            animation: morphBig 12s infinite alternate, floatCrazy 5s infinite;
-            max-width: 440px;
-            background: #3d2852;
+            box-shadow: 0 50px 80px -30px #00000080;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: 0.6s;
+            max-width: 420px;
+            background: #1e2a36;
         }
 
-        @keyframes morphBig {
-            0% { border-radius: 30% 70% 40% 60% / 50% 40% 60% 50%; }
-            25% { border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%; }
-            50% { border-radius: 40% 60% 30% 70% / 60% 30% 70% 40%; }
-            75% { border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%; }
-            100% { border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%; }
-        }
-
-        @keyframes floatCrazy {
-            0%,100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-25px) rotate(3deg); }
-            75% { transform: translateY(-15px) rotate(-3deg); }
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0) scale(1.02);
+            box-shadow: 0 60px 100px -25px #c6ad8a40;
         }
 
         .profile-placeholder {
             width: 100%;
             aspect-ratio: 1/1;
-            background: linear-gradient(145deg, #c1532e, #623aa2);
+            background: linear-gradient(145deg, #2c3e50, #1e2a36);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 120px;
-            font-weight: 800;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 0 60px #ffb978;
+            font-weight: 400;
+            font-family: 'Prata', serif;
+            color: rgba(230, 213, 184, 0.3);
+            border: 1px solid rgba(198, 173, 138, 0.2);
         }
 
-        /* section titles with glitch */
+        /* section styling */
+        section {
+            padding: 130px 0;
+        }
+
         .section-title {
-            font-size: 60px;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
+            font-size: 48px;
+            font-family: 'Prata', serif;
+            font-weight: 400;
             margin-bottom: 70px;
+            color: #e6d5b8;
+            position: relative;
             display: inline-block;
-            background: linear-gradient(135deg, #ffb46a, #c084fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            border-left: 10px solid #ff9933;
-            padding-left: 40px;
-            animation: glitch 3s infinite;
         }
 
-        @keyframes glitch {
-            0%,100% { transform: skew(0deg); opacity: 1; }
-            95% { transform: skew(5deg); opacity: 0.9; text-shadow: -5px 0 #ff00ff, 5px 0 #00ffff; }
-            97% { transform: skew(-5deg); }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #c6ad8a, #e6d5b8);
         }
 
-        /* about cards */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .about-card {
-            background: rgba(18, 12, 35, 0.6);
-            backdrop-filter: blur(20px);
-            border-radius: 70px;
-            padding: 50px;
-            border: 2px solid #ff9f4b;
-            transition: 0.4s;
-            animation: cardZoom 1s backwards;
-        }
-        .about-card:nth-child(1) { animation-delay: 0.1s; }
-        .about-card:nth-child(2) { animation-delay: 0.4s; }
-
-        @keyframes cardZoom {
-            from { opacity: 0; transform: scale(0.7) rotate(2deg); }
-            to { opacity: 1; transform: scale(1) rotate(0); }
-        }
-
-        .about-card:hover {
-            transform: translateY(-30px) scale(1.03);
-            border-color: #ffd966;
-            box-shadow: 0 0 70px #ffae42;
-        }
-
-        .about-card h3 {
-            font-size: 38px;
-            margin-bottom: 30px;
-            color: #ffc285;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        /* profile card */
+        .profile-card {
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 1px solid rgba(198, 173, 138, 0.15);
             font-size: 20px;
-            margin: 20px 0;
+            line-height: 1.9;
+            color: #cfd9e6;
+            transition: 0.5s;
+            box-shadow: 0 30px 50px -25px #000;
         }
 
-        .info-item i {
-            color: #ffa75e;
-            width: 35px;
-            font-size: 26px;
+        .profile-card:hover {
+            border-color: rgba(198, 173, 138, 0.4);
+            box-shadow: 0 40px 70px -20px #0a0c12;
+            transform: translateY(-8px);
         }
 
-        /* education */
+        /* education grid */
         .edu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -354,51 +341,47 @@
         }
 
         .edu-card {
-            background: rgba(25, 18, 45, 0.7);
-            backdrop-filter: blur(18px);
-            border-radius: 60px;
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
             padding: 45px 35px;
-            border: 2px solid #b979ff;
-            transition: 0.3s;
-            animation: eduSpin 1.2s backwards;
-            transform-origin: center;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+            transition: 0.5s;
+            animation: cardFade 0.8s backwards;
         }
-        .edu-card:nth-child(1) { animation-delay: 0.1s; }
-        .edu-card:nth-child(2) { animation-delay: 0.3s; }
-        .edu-card:nth-child(3) { animation-delay: 0.5s; }
 
-        @keyframes eduSpin {
-            0% { opacity: 0; transform: rotateY(180deg) scale(0.8); }
-            100% { opacity: 1; transform: rotateY(0) scale(1); }
+        .edu-card:nth-child(1) { animation-delay: 0.1s; }
+        .edu-card:nth-child(2) { animation-delay: 0.2s; }
+        .edu-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes cardFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .edu-card:hover {
-            border-color: #ffa351;
-            box-shadow: 0 0 60px #ff974f;
-            transform: scale(1.05) translateY(-15px) rotate(2deg);
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(198, 173, 138, 0.4);
+            box-shadow: 0 20px 50px -15px #000;
         }
 
-        .edu-card .year {
-            color: #ffc490;
+        .edu-card .institution {
+            font-weight: 600;
+            color: #e6d5b8;
             font-size: 22px;
-            font-weight: 700;
-        }
-
-        .edu-card h4 {
-            font-size: 36px;
-            margin: 10px 0 5px;
+            margin-bottom: 15px;
         }
 
         .edu-card .score {
-            font-size: 48px;
-            font-weight: 800;
-            background: linear-gradient(145deg, #ffbc6e, #d996ff);
+            font-size: 44px;
+            font-weight: 700;
+            background: linear-gradient(145deg, #fff, #c6ad8a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* skills */
+        /* skills section */
         .skills-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -406,124 +389,165 @@
         }
 
         .skill-panel {
-            background: rgba(20, 12, 40, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 70px;
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
             padding: 50px;
-            border: 2px solid #ff9f4b;
-            transition: 0.3s;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+            transition: 0.4s;
         }
 
         .skill-panel:hover {
-            border-color: #ffcc66;
-            box-shadow: 0 0 60px #ffae42;
+            border-color: rgba(198, 173, 138, 0.4);
+            box-shadow: 0 20px 50px -15px #000;
         }
 
         .skill-panel h3 {
-            font-size: 36px;
-            color: #ffbc8c;
+            font-size: 30px;
+            color: #e6d5b8;
             margin-bottom: 35px;
+            font-weight: 500;
         }
 
-        .skill-row {
+        .skill-items {
             display: flex;
-            align-items: center;
-            gap: 25px;
-            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .skill-name {
-            font-weight: 700;
-            min-width: 120px;
-            font-size: 22px;
-            color: #ffd9b0;
+        .skill-badge {
+            background: rgba(44, 62, 80, 0.5);
+            border: 1px solid #c6ad8a;
+            padding: 14px 30px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #cfd9e6;
+            transition: 0.3s;
         }
 
-        .skill-bar {
-            flex: 1;
-            height: 18px;
-            background: #312a52;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 10px black;
-        }
-
-        .skill-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff964f, #b45eff);
-            border-radius: 30px;
-            width: 0%;
-            animation: fillProgress 2s cubic-bezier(0.5, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fillProgress {
-            to { width: var(--target); }
-        }
-
-        .lang-items {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .lang-row {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            font-size: 22px;
+        .skill-badge:hover {
+            background: #2c3e50;
+            color: #e6d5b8;
+            transform: scale(1.05) translateY(-3px);
+            border-color: #e6d5b8;
         }
 
         .lang-badge {
-            background: #2d234a;
-            padding: 10px 32px;
+            background: rgba(44, 62, 80, 0.3);
+            border: 1px solid #c6ad8a;
+            padding: 10px 25px;
             border-radius: 60px;
-            border: 2px solid #ffbc6e;
-            color: #ffe1b3;
+            color: #cfd9e6;
         }
 
-        /* strengths */
+        /* experience */
+        .exp-list {
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 60px;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+        }
+
+        .exp-list ul {
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 20px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 18px;
+            color: #cfd9e6;
+        }
+
+        .exp-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #c6ad8a;
+            font-size: 22px;
+        }
+
+        /* strengths & hobbies combined */
         .strength-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
-        .trait-card {
-            background: rgba(28, 18, 45, 0.7);
-            backdrop-filter: blur(15px);
-            border-radius: 60px;
-            padding: 50px 20px;
+        .strength-item {
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 45px 25px;
             text-align: center;
-            border: 2px solid #ff974f;
-            transition: 0.4s;
-            animation: traitWiggle 5s infinite alternate;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+            transition: 0.5s;
+            animation: strengthRise 5s infinite alternate;
         }
 
-        .trait-card:nth-child(odd) { animation-delay: 0s; }
-        .trait-card:nth-child(even) { animation-delay: 0.6s; }
+        .strength-item:nth-child(odd) { animation-delay: 0s; }
+        .strength-item:nth-child(even) { animation-delay: 0.5s; }
 
-        @keyframes traitWiggle {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-25px) rotate(2deg); }
+        @keyframes strengthRise {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
         }
 
-        .trait-card:hover {
-            border-color: #ffcc66;
-            box-shadow: 0 0 80px #ff8a4d;
-            background: #2d1b52;
+        .strength-item:hover {
+            border-color: #c6ad8a;
+            background: rgba(44, 62, 80, 0.4);
+            box-shadow: 0 0 50px rgba(198, 173, 138, 0.2);
         }
 
-        .trait-card i {
-            font-size: 70px;
-            background: linear-gradient(145deg, #ffb27a, #cb99ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .strength-item i {
+            font-size: 48px;
+            color: #c6ad8a;
             margin-bottom: 20px;
         }
 
-        .trait-card h4 {
-            font-size: 30px;
+        .strength-item h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #e6d5b8;
+        }
+
+        /* hobbies extra row */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .hobby-item {
+            background: rgba(20, 28, 45, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 35px 20px;
+            text-align: center;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+            transition: 0.4s;
+        }
+
+        .hobby-item:hover {
+            border-color: #c6ad8a;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 40px rgba(198, 173, 138, 0.2);
+        }
+
+        .hobby-item i {
+            font-size: 40px;
+            color: #c6ad8a;
+            margin-bottom: 15px;
+        }
+
+        .hobby-item h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #e6d5b8;
         }
 
         /* contact */
@@ -531,243 +555,271 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            background: rgba(15, 8, 30, 0.8);
-            backdrop-filter: blur(25px);
-            border-radius: 90px;
-            padding: 80px;
-            border: 2px solid #ff974f;
-            transition: 0.3s;
+            background: rgba(20, 28, 45, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 70px;
+            border: 1px solid rgba(198, 173, 138, 0.15);
+            transition: 0.5s;
         }
 
         .contact-panel:hover {
-            border-color: #ffcc66;
-            box-shadow: 0 0 100px #ff974f;
+            border-color: rgba(198, 173, 138, 0.4);
+            box-shadow: 0 30px 70px -20px #000;
         }
 
         .contact-info h3 {
-            font-size: 44px;
-            color: #ffbd7f;
+            font-size: 34px;
+            color: #e6d5b8;
+            font-weight: 500;
             margin-bottom: 40px;
         }
 
         .contact-detail {
             display: flex;
             align-items: center;
-            gap: 25px;
-            font-size: 22px;
-            margin: 35px 0;
+            gap: 20px;
+            font-size: 18px;
+            margin: 30px 0;
+            color: #cfd9e6;
         }
 
         .contact-detail i {
-            width: 55px;
-            height: 55px;
-            background: #4d2e6b;
+            width: 50px;
+            height: 50px;
+            background: rgba(44, 62, 80, 0.5);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffb47b;
-            font-size: 26px;
+            color: #c6ad8a;
+            font-size: 22px;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 22px 30px;
-            background: #1f163a;
-            border: 2px solid #ff9f4b;
-            border-radius: 80px;
-            color: white;
-            font-size: 20px;
+            padding: 18px 25px;
+            background: rgba(10, 15, 25, 0.7);
+            border: 2px solid rgba(198, 173, 138, 0.2);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 17px;
             outline: none;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            border-color: #ffcc66;
-            box-shadow: 0 0 40px #ff974f, 0 0 15px #b266ff;
-            transform: scale(1.02);
+            border-color: #c6ad8a;
+            box-shadow: 0 0 30px rgba(198, 173, 138, 0.2);
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #ff8c42, #aa55ff);
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             border: none;
-            padding: 24px;
-            font-weight: 800;
-            font-size: 26px;
-            border-radius: 80px;
-            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 20px;
+            border-radius: 50px;
+            color: #e6d5b8;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.4s;
             width: 100%;
-            animation: submitPulse 2s infinite;
-        }
-
-        @keyframes submitPulse {
-            0%,100% { filter: brightness(1); box-shadow: 0 0 30px #ff974f; }
-            50% { filter: brightness(1.3); box-shadow: 0 0 80px #ffb347; }
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #ff9f5c, #c47aff);
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: #fff;
+            box-shadow: 0 0 50px rgba(198, 173, 138, 0.3);
+            transform: scale(1.02);
         }
 
         footer {
             text-align: center;
             padding: 40px;
-            background: #0d0920;
-            border-top: 3px solid #ff974f;
-            color: #ffcf9a;
-            font-size: 18px;
+            background: #0a0c12;
+            color: #7f8c8d;
+            border-top: 1px solid rgba(198, 173, 138, 0.15);
+            font-size: 16px;
         }
 
+        /* responsive */
         @media (max-width:800px){
-            nav { flex-direction: column; padding: 15px; }
-            .hero-content, .about-grid, .skills-wrapper, .contact-panel, .strength-grid { grid-template-columns: 1fr; }
+            nav { flex-direction: column; padding: 20px; }
+            .hero-content, .skills-wrapper, .contact-panel, .strength-grid, .hobbies-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="hyper-bg"></div>
-    <div class="floating-grid"></div>
-    <div class="energy-orb"></div>
+    <div class="prestige-bg"></div>
+    <div class="aurora"></div>
+    <div class="micro-grid"></div>
 
     <nav>
-        <div class="logo">SIRIS 8.7</div>
+        <div class="logo">Poorna</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#profile">Profile</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#strengths">Strengths</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
+    <!-- home -->
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Palaparthi Balu Ratna Siris</h1>
-                <div class="hero-sub">B.Tech · CGPA 8.7 · 97% Intermediate</div>
-                <p class="hero-desc">Dynamic problem solver, quick learner, and aspiring engineer. Looking for opportunities to excel.</p>
+                <h1>N. Poorna Prabath</h1>
+                <div class="hero-sub">SOFTWARE DEVELOPER</div>
+                <p class="hero-desc">C · C++ · Python · Java · HTML/CSS/JavaScript. Quick learner, problem solver, and collaborative team player with hands-on coding experience.</p>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">connect</a>
-                    <a href="#about" class="btn btn-outline">explore</a>
+                    <a href="#profile" class="btn btn-outline">discover</a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="profile-placeholder">S</div>
+                <div class="profile-placeholder">P</div>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <!-- profile -->
+    <section id="profile">
         <div class="container">
-            <h2 class="section-title">Profile & objective</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3><i class="fas fa-id-card"></i> personal</h3>
-                    <div class="info-item"><i class="fas fa-calendar-alt"></i> 24-05-2008</div>
-                    <div class="info-item"><i class="fas fa-map-marker-alt"></i> D.No.1478, Atapaka, Kaikaluru, Krishna Dist, AP-521333</div>
-                    <div class="info-item"><i class="fas fa-phone-alt"></i> +91 9491362899</div>
-                    <div class="info-item"><i class="fas fa-envelope"></i> ratnasiris08@gmail.com</div>
-                </div>
-                <div class="about-card">
-                    <h3><i class="fas fa-bullseye"></i> objective</h3>
-                    <p style="font-size: 20px; line-height: 1.8;">Aspire to work in a dynamic organization where there is scope to utilize my problem solving skills to take up challenges and opportunity to excel besides starting my career as an active team member.</p>
-                </div>
+            <h2 class="section-title">Profile</h2>
+            <div class="profile-card">
+                Enthusiastic and motivated Junior Software Developer with strong foundational knowledge in C, C++, Python, and Java. Skilled in web technologies including HTML, CSS, and JavaScript. Possess hands-on experience through academic labs and coding practice. Seeking an opportunity to contribute technical skills and grow in a professional environment.
             </div>
         </div>
     </section>
 
+    <!-- education -->
     <section id="education">
         <div class="container">
             <h2 class="section-title">Education</h2>
             <div class="edu-grid">
-                <div class="edu-card"><div class="year">2025-2029</div><h4>B.Tech</h4><div>Gudlavalleru Engineering College (JNTUK)</div><div class="score">8.7 CGPA</div></div>
-                <div class="edu-card"><div class="year">2023-2025</div><h4>Intermediate (MPC)</h4><div>Tirumala College · Board of Intermediate</div><div class="score">97%</div></div>
-                <div class="edu-card"><div class="year">2023</div><h4>S.S.C.</h4><div>Holy cross E.M.H.School</div><div class="score">90%</div></div>
+                <div class="edu-card">
+                    <div class="institution">B.Tech – Seshadri Rao Gudlavalleru Engineering College</div>
+                    <div class="score">CGPA: 8.18</div>
+                </div>
+                <div class="edu-card">
+                    <div class="institution">Intermediate – V.S. St. Johns Hr Sec School, Gannavaram</div>
+                    <div class="score">66.8%</div>
+                </div>
+                <div class="edu-card">
+                    <div class="institution">10th Class – V.S. St. Johns Hr Sec School, Gannavaram</div>
+                    <div class="score">69.8%</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="exp-list">
+                <ul>
+                    <li>Practiced programming concepts through academic lab sessions</li>
+                    <li>Developed basic console-based applications using C, C++, Python, and Java</li>
+                    <li>Created static web pages using HTML, CSS, and JavaScript</li>
+                    <li>Strengthened logical and problem-solving skills through regular coding practice</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">technical & languages</h2>
+            <h2 class="section-title">Skills</h2>
             <div class="skills-wrapper">
                 <div class="skill-panel">
-                    <h3><i class="fas fa-laptop-code"></i> programming & OS</h3>
-                    <div class="skill-row"><span class="skill-name">C</span><div class="skill-bar"><div class="skill-fill" style="--target:85%"></div></div></div>
-                    <div class="skill-row"><span class="skill-name">Windows 10</span><div class="skill-bar"><div class="skill-fill" style="--target:90%"></div></div></div>
+                    <h3>Programming</h3>
+                    <div class="skill-items">
+                        <span class="skill-badge">C</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Java</span>
+                    </div>
                 </div>
                 <div class="skill-panel">
-                    <h3><i class="fas fa-globe"></i> languages</h3>
-                    <div class="lang-items">
-                        <div class="lang-row"><span style="min-width:90px;">Telugu</span> <span class="lang-badge">native</span></div>
-                        <div class="lang-row"><span style="min-width:90px;">English</span> <span class="lang-badge">fluent</span></div>
-                        <div class="lang-row"><span style="min-width:90px;">Hindi</span> <span class="lang-badge">basic</span></div>
+                    <h3>Web & Languages</h3>
+                    <div class="skill-items" style="margin-bottom:25px;">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                    </div>
+                    <div>
+                        <h4 style="color:#c6ad8a; margin-bottom:15px;">Languages</h4>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <span class="lang-badge">Telugu</span>
+                            <span class="lang-badge">English</span>
+                            <span class="lang-badge">Hindi</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- strengths & hobbies (combined) -->
     <section id="strengths">
         <div class="container">
-            <h2 class="section-title">strengths & hobbies</h2>
+            <h2 class="section-title">Strengths & Hobbies</h2>
             <div class="strength-grid">
-                <div class="trait-card"><i class="fas fa-sync-alt"></i><h4>Adaptability</h4></div>
-                <div class="trait-card"><i class="fas fa-puzzle-piece"></i><h4>Problem solving</h4></div>
-                <div class="trait-card"><i class="fas fa-rocket"></i><h4>Quick learning</h4></div>
-                <div class="trait-card"><i class="fas fa-chess-queen"></i><h4>Playing chess</h4></div>
-                <div class="trait-card"><i class="fas fa-brain"></i><h4>Solving puzzles</h4></div>
-                <div class="trait-card"><i class="fas fa-book-open"></i><h4>Reading books</h4></div>
+                <div class="strength-item"><i class="fas fa-bolt"></i><h4>Quick Learner</h4></div>
+                <div class="strength-item"><i class="fas fa-brain"></i><h4>Logical Thinking</h4></div>
+                <div class="strength-item"><i class="fas fa-compass"></i><h4>Adaptability</h4></div>
+                <div class="strength-item"><i class="fas fa-users"></i><h4>Team Collaboration</h4></div>
+                <div class="strength-item"><i class="fas fa-cricket"></i><h4>Cricket</h4></div>
+                <div class="strength-item"><i class="fas fa-shield-alt"></i><h4>NCC</h4></div>
             </div>
         </div>
     </section>
 
+    <!-- contact -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">get in touch</h2>
+            <h2 class="section-title">Get in touch</h2>
             <div class="contact-panel">
                 <div class="contact-info">
-                    <h3>reach directly</h3>
-                    <div class="contact-detail"><i class="fas fa-phone-alt"></i> +91 9491362899</div>
-                    <div class="contact-detail"><i class="fas fa-envelope"></i> ratnasiris08@gmail.com</div>
-                    <div class="contact-detail"><i class="fas fa-map-pin"></i> Atapaka, Kaikaluru, Krishna Dist, AP</div>
+                    <h3>Contact</h3>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i> poornaprabath2008@gmail.com</div>
+                    <div class="contact-detail"><i class="fas fa-phone-alt"></i> 9494244759</div>
+                    <div class="contact-detail"><i class="fab fa-linkedin"></i> /poorna-prabath-neelapala</div>
                 </div>
                 <form id="contactForm">
-                    <div class="form-group"><input type="text" placeholder="your name" required></div>
-                    <div class="form-group"><input type="email" placeholder="email" required></div>
-                    <div class="form-group"><textarea rows="5" placeholder="message..."></textarea></div>
-                    <button type="submit" class="submit-btn">send ✦</button>
+                    <div class="form-group"><input type="text" placeholder="Your name" required></div>
+                    <div class="form-group"><input type="email" placeholder="Email address" required></div>
+                    <div class="form-group"><textarea rows="4" placeholder="Your message..."></textarea></div>
+                    <button type="submit" class="submit-btn">Send message</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-        © 2026 Palaparthi Balu Ratna Siris · CGPA 8.7 · dynamic theme
+        <p>© 2026 N. Poorna Prabath — poornaprabath2008@gmail.com — 9494244759 — linkedin.com/in/poorna-prabath-neelapala</p>
     </footer>
 
     <script>
-        window.addEventListener('load', ()=>{
-            document.querySelectorAll('.skill-fill').forEach(el => {
-                el.style.width = el.style.getPropertyValue('--target');
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e){
+        // smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e){
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if(target) target.scrollIntoView({behavior: 'smooth'});
             });
         });
 
+        // form simulation
         document.getElementById('contactForm').addEventListener('submit', function(e){
             e.preventDefault();
-            alert('✨ Thank you! Siris (CGPA 8.7) will reply soon.');
+            alert('Thank you for reaching out! Poorna will respond shortly.');
             this.reset();
         });
     </script>
