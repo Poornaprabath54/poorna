@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Borra Pardhu | 3D Premium Portfolio | AI Engineer</title>
+    <title>Battula Akhil | Sunset Nebula | 3D Premium Portfolio</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -29,7 +29,7 @@
             color: #fff;
         }
 
-        /* 3D Canvas Background */
+        /* Canvas 3D Background */
         #canvas-container {
             position: fixed;
             top: 0;
@@ -48,20 +48,21 @@
             padding: 1.5rem;
         }
 
-        /* Navigation Bar */
+        /* Navigation Bar - Sunset Theme */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            background: rgba(10, 15, 35, 0.75);
+            background: rgba(20, 10, 25, 0.85);
             backdrop-filter: blur(16px);
             border-radius: 80px;
             padding: 0.8rem 2rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(0, 210, 255, 0.3);
+            border: 1px solid rgba(255, 120, 80, 0.4);
             animation: slideDown 0.6s ease;
+            box-shadow: 0 0 20px rgba(255, 100, 50, 0.15);
         }
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-30px); }
@@ -71,7 +72,7 @@
             font-family: 'Orbitron', monospace;
             font-size: 1.4rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            background: linear-gradient(135deg, #FF8C42, #FF3D6C, #FFD166);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -82,7 +83,7 @@
             flex-wrap: wrap;
         }
         .nav-links a {
-            color: #e0e7ff;
+            color: #FFE0B5;
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
@@ -91,29 +92,31 @@
             gap: 6px;
         }
         .nav-links a:hover {
-            color: #00d2ff;
+            color: #FF8C42;
             transform: translateY(-2px);
+            text-shadow: 0 0 8px #FF8C42;
         }
         .nav-btn {
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            background: linear-gradient(135deg, #FF8C42, #FF3D6C);
             padding: 0.5rem 1.2rem;
             border-radius: 40px;
             color: white;
             font-weight: 600;
+            box-shadow: 0 0 10px rgba(255, 140, 66, 0.3);
         }
         .nav-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,210,255,0.3);
+            box-shadow: 0 5px 20px rgba(255, 61, 108, 0.5);
         }
 
-        /* Glass Cards */
+        /* Glass Cards - Warm Sunset Theme */
         .glass-card {
-            background: rgba(15, 20, 45, 0.7);
+            background: rgba(25, 15, 35, 0.7);
             backdrop-filter: blur(12px);
             border-radius: 1.8rem;
             padding: 2rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(0, 210, 255, 0.3);
+            border: 1px solid rgba(255, 140, 66, 0.35);
             transition: all 0.4s ease;
             animation: fadeUp 0.7s ease backwards;
         }
@@ -123,8 +126,8 @@
         }
         .glass-card:hover {
             transform: translateY(-5px);
-            border-color: #00d2ff;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            border-color: #FF3D6C;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4), 0 0 20px rgba(255, 61, 108, 0.2);
         }
 
         /* Hero Section */
@@ -141,19 +144,20 @@
         }
         .hero-badge {
             display: inline-block;
-            background: rgba(0, 210, 255, 0.15);
-            border: 1px solid #00d2ff;
+            background: rgba(255, 140, 66, 0.2);
+            border: 1px solid #FF8C42;
             padding: 0.3rem 1.2rem;
             border-radius: 50px;
             font-size: 0.8rem;
             margin-bottom: 1rem;
+            box-shadow: 0 0 8px rgba(255, 140, 66, 0.3);
         }
         .hero h1 {
             font-family: 'Orbitron', monospace;
             font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5, #7c3aed);
-            background-size: 200% auto;
+            background: linear-gradient(135deg, #FF8C42, #FF3D6C, #FFD166, #FF8C42);
+            background-size: 300% auto;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -166,11 +170,12 @@
         }
         .hero-tagline {
             font-size: 1.2rem;
-            color: #00d2ff;
+            color: #FFD166;
             margin-bottom: 1rem;
+            text-shadow: 0 0 5px rgba(255, 209, 102, 0.5);
         }
         .hero p {
-            color: #c4d0ff;
+            color: #FFE0B5;
             line-height: 1.6;
         }
         .hero-stats {
@@ -181,7 +186,8 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 800;
-            color: #00d2ff;
+            color: #FF3D6C;
+            text-shadow: 0 0 5px #FF3D6C;
         }
         .avatar-3d {
             flex: 1;
@@ -189,19 +195,24 @@
             animation: floatGlow 3s infinite alternate;
         }
         @keyframes floatGlow {
-            0% { transform: translateY(0px); filter: drop-shadow(0 0 10px rgba(0,210,255,0.3)); }
-            100% { transform: translateY(-15px); filter: drop-shadow(0 0 30px rgba(0,210,255,0.6)); }
+            0% { transform: translateY(0px); filter: drop-shadow(0 0 10px rgba(255, 140, 66, 0.4)); }
+            100% { transform: translateY(-15px); filter: drop-shadow(0 0 30px rgba(255, 61, 108, 0.6)); }
         }
         .avatar-circle {
             width: 260px;
             height: 260px;
-            background: linear-gradient(135deg, #00d2ff, #3a7bd5, #7c3aed);
+            background: linear-gradient(135deg, #FF8C42, #FF3D6C, #FFD166);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            box-shadow: 0 0 50px rgba(0,210,255,0.4);
+            box-shadow: 0 0 60px rgba(255, 140, 66, 0.5);
+            animation: avatarPulse 2.5s infinite alternate;
+        }
+        @keyframes avatarPulse {
+            0% { transform: scale(1); box-shadow: 0 0 40px rgba(255, 140, 66, 0.4); }
+            100% { transform: scale(1.02); box-shadow: 0 0 70px rgba(255, 61, 108, 0.6); }
         }
         .avatar-circle i {
             font-size: 6rem;
@@ -215,7 +226,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             display: inline-block;
-            border-left: 4px solid #00d2ff;
+            border-left: 4px solid #FF8C42;
             padding-left: 1rem;
         }
 
@@ -232,32 +243,33 @@
         }
 
         .info-card {
-            background: rgba(20, 25, 55, 0.6);
+            background: rgba(30, 20, 45, 0.6);
             border-radius: 1.3rem;
             padding: 1.3rem;
             transition: 0.3s;
-            border: 1px solid rgba(0, 210, 255, 0.2);
+            border: 1px solid rgba(255, 140, 66, 0.25);
         }
         .info-card:hover {
             transform: translateY(-5px);
-            border-color: #00d2ff;
-            background: rgba(30, 40, 80, 0.8);
+            border-color: #FF3D6C;
+            background: rgba(50, 35, 70, 0.8);
+            box-shadow: 0 0 15px rgba(255, 61, 108, 0.2);
         }
         .info-card i {
             font-size: 1.8rem;
-            color: #00d2ff;
+            color: #FFD166;
             margin-bottom: 0.8rem;
         }
         .info-card h3 {
-            color: #a5f3ff;
+            color: #FF8C42;
             margin-bottom: 0.5rem;
         }
 
         /* Skill Tags */
         .skill-tag {
             display: inline-block;
-            background: rgba(0, 210, 255, 0.12);
-            border: 1px solid rgba(0, 210, 255, 0.5);
+            background: rgba(255, 140, 66, 0.15);
+            border: 1px solid rgba(255, 140, 66, 0.5);
             padding: 0.3rem 1rem;
             border-radius: 40px;
             font-size: 0.8rem;
@@ -265,14 +277,15 @@
             transition: 0.2s;
         }
         .skill-tag:hover {
-            background: #00d2ff;
+            background: #FF8C42;
             color: #0a0a1a;
             transform: scale(1.02);
+            box-shadow: 0 0 10px #FF8C42;
         }
 
         /* Progress Bars */
         .progress-bar {
-            background: #1a1a3a;
+            background: #2a2045;
             border-radius: 30px;
             height: 8px;
             margin: 8px 0;
@@ -280,21 +293,23 @@
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            background: linear-gradient(90deg, #FF8C42, #FF3D6C);
             border-radius: 30px;
             width: 0;
             transition: width 1.2s ease;
+            box-shadow: 0 0 5px #FF8C42;
         }
 
         /* Certificate */
         .cert-glow {
-            background: linear-gradient(125deg, #0a0f25, #050a18);
+            background: linear-gradient(125deg, #1a1025, #0a0515);
             border-radius: 1.5rem;
             padding: 1.5rem;
             text-align: center;
-            border: 1px solid #00d2ff;
+            border: 1px solid #FFD166;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 209, 102, 0.2);
         }
         .cert-glow::before {
             content: '';
@@ -303,7 +318,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(115deg, rgba(0,210,255,0.15), transparent 70%);
+            background: linear-gradient(115deg, rgba(255, 140, 66, 0.2), transparent 70%);
             transform: rotate(30deg);
             animation: shineMove 6s infinite linear;
         }
@@ -321,11 +336,11 @@
             margin-top: 1rem;
         }
         .contact-btn {
-            background: rgba(0, 210, 255, 0.12);
-            border: 1px solid #00d2ff;
+            background: rgba(255, 140, 66, 0.12);
+            border: 1px solid #FF8C42;
             padding: 0.7rem 1.5rem;
             border-radius: 50px;
-            color: #00d2ff;
+            color: #FFD166;
             text-decoration: none;
             transition: 0.3s;
             display: inline-flex;
@@ -333,17 +348,20 @@
             gap: 8px;
         }
         .contact-btn:hover {
-            background: #00d2ff;
-            color: #0a0a1a;
+            background: #FF3D6C;
+            color: white;
+            border-color: #FF3D6C;
             transform: translateY(-3px);
+            box-shadow: 0 0 15px #FF3D6C;
         }
 
         footer {
             text-align: center;
             padding: 1.5rem;
-            border-top: 1px solid rgba(0,210,255,0.2);
+            border-top: 1px solid rgba(255, 140, 66, 0.2);
             margin-top: 2rem;
             font-size: 0.75rem;
+            color: #FFD0A0;
         }
 
         @media (max-width: 768px) {
@@ -359,14 +377,14 @@
     <div id="canvas-container"></div>
 
     <div class="main-content">
-        <!-- Navigation Bar with Home, Education, Skills, Expertise, Contact -->
+        <!-- Navigation Bar -->
         <div class="navbar">
-            <div class="logo"><i class="fas fa-crown"></i> BORRA PARDHU</div>
+            <div class="logo"><i class="fas fa-crown"></i> BATTULA AKHIL</div>
             <div class="nav-links">
                 <a href="#home"><i class="fas fa-home"></i> Home</a>
                 <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
                 <a href="#skills"><i class="fas fa-code"></i> Skills</a>
-                <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
+                <a href="#project"><i class="fas fa-project-diagram"></i> Project</a>
                 <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             </div>
             <a href="#contact" class="nav-btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
@@ -375,17 +393,17 @@
         <!-- Hero Section -->
         <div id="home" class="glass-card hero">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-crown"></i> AI-Powered Developer</div>
-                <h1>BORRA PARDHU</h1>
-                <div class="hero-tagline"><i class="fas fa-code"></i> Software Developer | AI Enthusiast</div>
-                <p>Passionate Software Developer with strong foundations in C, C++, Python, and Java. Building modern, futuristic web applications using AI tools. Quick learner with strong logical thinking and adaptability.</p>
+                <div class="hero-badge"><i class="fas fa-crown"></i> Sunset Developer</div>
+                <h1>BATTULA AKHIL</h1>
+                <div class="hero-tagline"><i class="fas fa-code"></i> Software Architect | AI Explorer</div>
+                <p>Passionate Software Developer with strong foundations in C Programming. Building modern, futuristic web applications using AI tools. Quick learner with strong logical thinking and adaptability.</p>
                 <div class="hero-stats">
-                    <div><span class="stat-number">5+</span><br>Technologies</div>
+                    <div><span class="stat-number">3+</span><br>Technologies</div>
                     <div><span class="stat-number">3</span><br>Languages</div>
-                    <div><span class="stat-number">6+</span><br>Projects</div>
+                    <div><span class="stat-number">2+</span><br>Projects</div>
                 </div>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#contact" class="contact-btn" style="background: #00d2ff; color: #0a0a1a;">Get in touch <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="contact-btn" style="background: #FF8C42; color: #0a0a1a;">Get in touch <i class="fas fa-arrow-right"></i></a>
                     <a href="#education" class="contact-btn">View Resume <i class="fas fa-download"></i></a>
                 </div>
             </div>
@@ -396,20 +414,56 @@
             </div>
         </div>
 
-        <!-- Profile -->
+        <!-- Profile / Personal Info -->
         <div class="glass-card">
-            <i class="fas fa-user-circle" style="font-size: 2rem; color: #00d2ff;"></i>
+            <i class="fas fa-user-circle" style="font-size: 2rem; color: #FFD166;"></i>
             <h2 class="section-title" style="margin-top: 0.5rem;">Profile</h2>
-            <p style="font-size: 1.05rem;">Enthusiastic and motivated Information Technology student with strong foundational knowledge in C, C++, Python, and Java. Skilled in web technologies including HTML, CSS, JavaScript, and AI tools. Hands-on experience through academic labs and coding practice. Quick learner with strong logical thinking and adaptability.</p>
+            <div class="grid-2">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Date of Birth</h3>
+                    <p>01 June 2008</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+91 7702233369</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>akhilbattula7@gmail.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Avanigadda, Andhra Pradesh</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Education -->
+        <!-- Education Section -->
         <div id="education" class="glass-card">
             <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
             <div class="grid-2">
-                <div class="info-card"><i class="fas fa-university"></i><h3>B.Tech (IT)</h3><p>Sheshadri Rao Gudlavalleru Engineering College<br><strong>82.3%</strong> (First Year)</p></div>
-                <div class="info-card"><i class="fas fa-school"></i><h3>Intermediate (MPC)</h3><p>Sri Chaitanya Junior College<br><strong>92.4%</strong> (2025)</p></div>
-                <div class="info-card"><i class="fas fa-chalkboard"></i><h3>10th Class (SSC)</h3><p>Indo-Saxon EM High School<br><strong>84%</strong> (2023)</p></div>
+                <div class="info-card">
+                    <i class="fas fa-university"></i>
+                    <h3>B.Tech (Information Technology)</h3>
+                    <p>Seshadri Rao Gudlavalleru Engineering College</p>
+                    <p><strong>1st Semester: 84.1%</strong></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-school"></i>
+                    <h3>Intermediate (MPC)</h3>
+                    <p>A.V.R. Junior College, Avanigadda</p>
+                    <p><strong>Percentage: 93.7%</strong> (2025)</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-chalkboard"></i>
+                    <h3>SSC (10th Class)</h3>
+                    <p>St. Ann's E.M. High School, Avanigadda</p>
+                    <p><strong>Percentage: 85%</strong> (2023)</p>
+                </div>
             </div>
         </div>
 
@@ -420,94 +474,79 @@
                 <div class="info-card">
                     <i class="fas fa-code"></i>
                     <h3>Programming Languages</h3>
-                    <div><span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span></div>
+                    <div><span class="skill-tag">C Programming</span></div>
                 </div>
                 <div class="info-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Web Technologies</h3>
-                    <div><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">AI Tools</span></div>
+                    <i class="fas fa-comments"></i>
+                    <h3>Soft Skills</h3>
+                    <div><span class="skill-tag">Communication Skills</span><span class="skill-tag">Problem Solving</span></div>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-language"></i>
-                    <h3>Languages</h3>
-                    <div><span class="skill-tag">Telugu</span><span class="skill-tag">English</span><span class="skill-tag">Hindi</span></div>
+                    <h3>Languages Known</h3>
+                    <div><span class="skill-tag">Telugu</span><span class="skill-tag">Hindi</span><span class="skill-tag">English</span></div>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-chart-line"></i>
                     <h3>Skill Mastery</h3>
-                    <div>C/C++ <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div></div>
-                    <div>Python/Java <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
-                    <div>Web Dev <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+                    <div>C Programming <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div></div>
+                    <div>Problem Solving <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+                    <div>Communication <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
                 </div>
             </div>
         </div>
 
-        <!-- Expertise Section (replaced Services) -->
-        <div id="expertise" class="glass-card">
-            <h2 class="section-title"><i class="fas fa-brain"></i> Core Expertise</h2>
-            <div class="grid-3">
-                <div class="info-card" style="text-align: center;"><i class="fas fa-laptop-code"></i><h3>Full Stack Development</h3><p>Modern responsive web applications</p></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-robot"></i><h3>AI Integration</h3><p>ChatGPT, AI-powered solutions</p></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-database"></i><h3>Problem Solving</h3><p>DSA & logical programming</p></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-mobile-alt"></i><h3>Responsive Design</h3><p>Mobile-first interfaces</p></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-cloud"></i><h3>Cloud Basics</h3><p>Deployment & hosting</p></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-shield-alt"></i><h3>Best Practices</h3><p>Clean code & optimization</p></div>
-            </div>
-        </div>
-
-        <!-- Workshop Certificate -->
-        <div class="glass-card">
-            <h2 class="section-title"><i class="fas fa-award"></i> Certification</h2>
+        <!-- Project Section -->
+        <div id="project" class="glass-card">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Project</h2>
             <div class="cert-glow">
-                <i class="fas fa-certificate" style="font-size: 2rem; color: #00d2ff;"></i>
-                <h3 style="color: #a5f3ff;">✨ Smart Web Design using AI Tools Workshop</h3>
-                <p><strong>📅 26-02-2026 to 27-02-2026</strong><br>Dept. of IT & Brainovision Solutions India Pvt. Ltd.<br>📍 Gudlavalleru Engineering College</p>
-                <div style="background: #00d2ff; color: #0a0a1a; display: inline-block; padding: 6px 20px; border-radius: 40px;">✅ Certificate Earned</div>
+                <i class="fas fa-laptop-code" style="font-size: 2rem; color: #FFD166;"></i>
+                <h3 style="color: #FF8C42; margin-top: 0.5rem;">✨ Web Designing using AI Tools</h3>
+                <p><strong>Skill Development Project (SDP)</strong><br>Designed and developed modern web applications using cutting-edge AI tools. Implemented responsive layouts and interactive features with AI assistance.</p>
+                <div style="background: #FF3D6C; color: white; display: inline-block; padding: 6px 20px; border-radius: 40px; margin-top: 8px; box-shadow: 0 0 15px #FF3D6C;">🚀 Project Completed</div>
             </div>
         </div>
 
-        <!-- Strengths -->
+        <!-- Hobbies & Interests -->
         <div class="glass-card">
-            <h2 class="section-title"><i class="fas fa-star"></i> Strengths</h2>
+            <h2 class="section-title"><i class="fas fa-heart"></i> Hobbies & Interests</h2>
             <div class="grid-3">
-                <div class="info-card" style="text-align: center;"><i class="fas fa-bolt"></i><h3>Quick Learner</h3></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-brain"></i><h3>Logical Thinking</h3></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-handshake"></i><h3>Team Collaboration</h3></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-chart-line"></i><h3>Adaptability</h3></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-cricket-ball"></i><h3>Cricket</h3></div>
-                <div class="info-card" style="text-align: center;"><i class="fas fa-book"></i><h3>Reading</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-book"></i><h3>Reading Books</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-film"></i><h3>Watching Movies</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-code"></i><h3>Coding</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-music"></i><h3>Music</h3></div>
             </div>
         </div>
 
         <!-- Contact Section -->
         <div id="contact" class="glass-card" style="text-align: center;">
-            <i class="fas fa-paper-plane" style="font-size: 2.5rem; color: #00d2ff;"></i>
+            <i class="fas fa-paper-plane" style="font-size: 2.5rem; color: #FFD166;"></i>
             <h2 class="section-title" style="display: block; text-align: center;">Get in touch</h2>
             <p>Let's connect and build something amazing together!</p>
             <div class="contact-grid">
-                <a href="mailto:pardhuborra018@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> pardhuborra018@gmail.com</a>
-                <a href="#" class="contact-btn"><i class="fas fa-phone-alt"></i> +91 7842554591</a>
+                <a href="mailto:akhilbattula7@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> akhilbattula7@gmail.com</a>
+                <a href="#" class="contact-btn"><i class="fas fa-phone-alt"></i> +91 7702233369</a>
                 <a href="#" class="contact-btn"><i class="fab fa-github"></i> GitHub</a>
                 <a href="#" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
 
         <footer>
-            <i class="fas fa-crown" style="color: #00d2ff;"></i> Borra Pardhu | 3D Premium Portfolio | AI-Powered
+            <i class="fas fa-crown" style="color: #FFD166;"></i> Battula Akhil | Sunset Nebula | 3D Premium Portfolio
         </footer>
     </div>
 
     <script type="module">
         import * as THREE from 'three';
 
-        // --- 3D Background: Premium Look ---
+        // --- SUNSET NEBULA BACKGROUND: WARM TONES, FLOATING PARTICLES, SMOOTH MOTION ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x0a0a1a);
-        scene.fog = new THREE.FogExp2(0x0a0a1a, 0.003);
+        scene.background = new THREE.Color(0x0a0515);
+        scene.fog = new THREE.FogExp2(0x0a0515, 0.002);
 
         const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 1.2, 12);
+        camera.position.set(0, 1.2, 13);
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
@@ -515,62 +554,111 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0x222244);
+        // Warm Lighting for Sunset Theme
+        const ambientLight = new THREE.AmbientLight(0x331c1a);
         scene.add(ambientLight);
-        const mainLight = new THREE.DirectionalLight(0xffffff, 1);
-        mainLight.position.set(2, 3, 4);
+        const mainLight = new THREE.DirectionalLight(0xffaa77, 1.2);
+        mainLight.position.set(2, 3, 5);
         scene.add(mainLight);
-        const fillLight = new THREE.PointLight(0x00d2ff, 0.5);
-        fillLight.position.set(1, 2, 3);
+        const fillLight = new THREE.PointLight(0xff6644, 0.7);
+        fillLight.position.set(1.5, 2, 3);
         scene.add(fillLight);
+        const backLight = new THREE.PointLight(0xff3366, 0.5);
+        backLight.position.set(-2, 1, -6);
+        scene.add(backLight);
+        const rimLight = new THREE.PointLight(0xffaa44, 0.6);
+        rimLight.position.set(0, 2, -4);
+        scene.add(rimLight);
 
-        // Central Object: Glowing Torus Knot
-        const knotGeo = new THREE.TorusKnotGeometry(1.0, 0.25, 180, 24, 3, 4);
-        const knotMat = new THREE.MeshStandardMaterial({ color: 0x00d2ff, emissive: 0x0066aa, emissiveIntensity: 0.6, metalness: 0.7, roughness: 0.3 });
+        // Central Object: Glowing Torus Knot with Sunset Colors
+        const knotGeo = new THREE.TorusKnotGeometry(1.0, 0.22, 200, 32, 3, 4);
+        const knotMat = new THREE.MeshStandardMaterial({ color: 0xff8844, emissive: 0xcc4422, emissiveIntensity: 0.6, metalness: 0.7, roughness: 0.3 });
         const knot = new THREE.Mesh(knotGeo, knotMat);
         scene.add(knot);
 
-        // Orbiting Rings
+        // Orbiting Rings with Warm Hues
         const ringGeo = new THREE.TorusGeometry(1.6, 0.05, 128, 200);
-        const ringMat = new THREE.MeshStandardMaterial({ color: 0x3a7bd5, emissive: 0x224466 });
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0xffaa66, emissive: 0x552200, emissiveIntensity: 0.4 });
         const ring = new THREE.Mesh(ringGeo, ringMat);
         scene.add(ring);
 
-        const ring2Geo = new THREE.TorusGeometry(2.0, 0.04, 128, 200);
-        const ring2Mat = new THREE.MeshStandardMaterial({ color: 0x7c3aed, emissive: 0x331177 });
+        const ring2Geo = new THREE.TorusGeometry(2.1, 0.04, 128, 200);
+        const ring2Mat = new THREE.MeshStandardMaterial({ color: 0xff6688, emissive: 0x441133, emissiveIntensity: 0.4 });
         const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
         scene.add(ring2);
 
-        // Particle System
-        const particleCount = 1500;
+        const ring3Geo = new THREE.TorusGeometry(2.5, 0.03, 128, 200);
+        const ring3Mat = new THREE.MeshStandardMaterial({ color: 0xffaa88, emissive: 0x442200, emissiveIntensity: 0.3 });
+        const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
+        scene.add(ring3);
+
+        // Particle Galaxy - Sunset Nebula
+        const particleCount = 3500;
         const particlesGeo = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
         for (let i = 0; i < particleCount; i++) {
-            const radius = 3 + Math.random() * 4;
+            const radius = 3.5 + Math.random() * 6.5;
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos(2 * Math.random() - 1);
             positions[i*3] = radius * Math.sin(phi) * Math.cos(theta);
             positions[i*3+1] = radius * Math.sin(phi) * Math.sin(theta) * 0.5;
             positions[i*3+2] = radius * Math.cos(phi);
+            
+            // Warm sunset color palette
+            const colorType = Math.random();
+            let r, g, b;
+            if (colorType < 0.33) { r = 1.0; g = 0.5; b = 0.2; }      // orange
+            else if (colorType < 0.66) { r = 1.0; g = 0.3; b = 0.5; }    // pink/red
+            else { r = 1.0; g = 0.8; b = 0.3; }                           // gold
+            colors[i*3] = r;
+            colors[i*3+1] = g;
+            colors[i*3+2] = b;
         }
         particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particleMat = new THREE.PointsMaterial({ color: 0x00d2ff, size: 0.06, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending });
+        particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        const particleMat = new THREE.PointsMaterial({ size: 0.07, vertexColors: true, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending });
         const particles = new THREE.Points(particlesGeo, particleMat);
         scene.add(particles);
+
+        // Floating Orbs with Warm Colors
+        const orbs = [];
+        const orbColorList = [0xff8844, 0xff6688, 0xffaa55, 0xff4466];
+        for (let i = 0; i < 60; i++) {
+            const size = 0.06 + Math.random() * 0.12;
+            const orbMat = new THREE.MeshStandardMaterial({ color: orbColorList[Math.floor(Math.random() * orbColorList.length)], emissive: 0x552200, emissiveIntensity: 0.4 });
+            const orb = new THREE.Mesh(new THREE.SphereGeometry(size, 16, 16), orbMat);
+            orb.userData = { radius: 2.2 + Math.random() * 4.5, angle: Math.random() * Math.PI * 2, speed: 0.006 + Math.random() * 0.015 };
+            scene.add(orb);
+            orbs.push(orb);
+        }
 
         let time = 0;
         function animate() {
             requestAnimationFrame(animate);
-            time += 0.01;
+            time += 0.014;
             
-            knot.rotation.x += 0.008;
+            knot.rotation.x += 0.007;
             knot.rotation.y += 0.012;
-            ring.rotation.x += 0.004;
-            ring.rotation.z += 0.006;
-            ring2.rotation.y += 0.005;
-            ring2.rotation.x += 0.003;
-            particles.rotation.y += 0.001;
+            knot.rotation.z += 0.005;
+            
+            ring.rotation.x += 0.005;
+            ring.rotation.z += 0.008;
+            ring2.rotation.y += 0.006;
+            ring2.rotation.x += 0.004;
+            ring3.rotation.z += 0.003;
+            ring3.rotation.y += 0.005;
+            
+            particles.rotation.y += 0.0012;
+            particles.rotation.x = Math.sin(time * 0.15) * 0.08;
+            
+            orbs.forEach((orb, idx) => {
+                const rad = orb.userData.radius;
+                const angle = time * 0.9 + idx;
+                orb.position.x = Math.cos(angle) * rad;
+                orb.position.z = Math.sin(angle) * rad;
+                orb.position.y = Math.sin(angle * 1.5) * 1.4;
+            });
             
             camera.position.x += (0 - camera.position.x) * 0.02;
             camera.position.y += (1.0 - camera.position.y) * 0.02;
@@ -589,8 +677,8 @@
         document.addEventListener('mousemove', (e) => {
             const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-            camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.03;
-            camera.position.y += (-mouseY * 0.2 + 0.8 - camera.position.y) * 0.03;
+            camera.position.x += (mouseX * 0.4 - camera.position.x) * 0.03;
+            camera.position.y += (-mouseY * 0.25 + 0.9 - camera.position.y) * 0.03;
             camera.lookAt(0, 0, 0);
         });
     </script>
