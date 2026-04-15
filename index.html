@@ -1,1219 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🇮🇳 DRDO | TRI-SERVICES ADVANCED AI BATTLEFIELD ASSESSMENT SYSTEM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Syncopate:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --army-green: #4B5320;
-            --army-gold: #FFD700;
-            --navy-blue: #000080;
-            --navy-sky: #87CEEB;
-            --airforce-blue: #003153;
-            --airforce-sky: #00BFFF;
-            --danger-red: #DC143C;
-            --success-green: #4CAF50;
-            --cyber-teal: #00FFFF;
-            --matrix-green: #00FF00;
-        }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(0deg, rgba(0,255,255,0.03) 0px, rgba(0,255,255,0.03) 1px, transparent 1px, transparent 50px),
-                repeating-linear-gradient(90deg, rgba(255,215,0,0.03) 0px, rgba(255,215,0,0.03) 1px, transparent 1px, transparent 50px);
-            z-index: -1;
-        }
-
-        /* Tricolor Header */
-        .tricolor-strip {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #FF9933 0%, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%, #138808 100%);
-            z-index: 1000;
-            box-shadow: 0 0 20px rgba(255,215,0,0.5);
-        }
-
-        /* Main Header */
-        .drdo-header {
-            background: linear-gradient(135deg, #000000, #0A1F44);
-            padding: 1rem 2rem;
-            border-bottom: 2px solid #FFD700;
-            margin-top: 4px;
-        }
-
-        .header-container {
-            max-width: 1800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .drdo-emblem {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .title-section h1 {
-            font-size: 1.8rem;
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #ffffff, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .title-section h2 {
-            font-size: 1.2rem;
-            color: #aaa;
-        }
-
-        .security-badge {
-            background: #DC143C;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 700;
-            border: 1px solid #FFD700;
-            animation: pulse 2s infinite;
-        }
-
-        /* Force Selector */
-        .force-selector {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .force-card {
-            background: rgba(0,0,0,0.5);
-            border: 2px solid;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s;
-            backdrop-filter: blur(10px);
-        }
-
-        .force-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,215,0,0.3);
-        }
-
-        .force-card.active {
-            transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(255,215,0,0.5);
-        }
-
-        .force-card.army { border-color: #4B5320; }
-        .force-card.navy { border-color: #000080; }
-        .force-card.airforce { border-color: #003153; }
-
-        .force-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .force-name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .force-motto {
-            font-size: 1rem;
-            color: #aaa;
-        }
-
-        /* Tri-Services Stats */
-        .tri-stats {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid;
-            border-radius: 15px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-card.army { border-color: #4B5320; }
-        .stat-card.navy { border-color: #000080; }
-        .stat-card.airforce { border-color: #003153; }
-
-        .stat-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .stat-header i {
-            font-size: 2rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        /* Command Centers Grid */
-        .commands-section {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-family: 'Orbitron', sans-serif;
-            color: #FFD700;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .commands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .command-card {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid;
-            border-radius: 15px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .command-card.army { border-color: #4B5320; }
-        .command-card.navy { border-color: #000080; }
-        .command-card.airforce { border-color: #003153; }
-
-        .command-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255,215,0,0.2);
-        }
-
-        .command-card.active {
-            border-width: 3px;
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
-        }
-
-        .command-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .command-header i {
-            font-size: 2rem;
-        }
-
-        .command-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .command-location {
-            color: #aaa;
-            margin-bottom: 0.5rem;
-        }
-
-        .command-coords {
-            font-family: 'Share Tech Mono', monospace;
-            color: #00FF00;
-        }
-
-        /* Assets Grid */
-        .assets-section {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .assets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .asset-card {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid;
-            border-radius: 15px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .asset-card.army { border-color: #4B5320; }
-        .asset-card.navy { border-color: #000080; }
-        .asset-card.airforce { border-color: #003153; }
-
-        .asset-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #FFD700;
-            margin-bottom: 0.5rem;
-        }
-
-        .asset-type {
-            color: #aaa;
-            margin-bottom: 0.5rem;
-        }
-
-        .asset-status {
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            background: rgba(0,255,0,0.2);
-            border: 1px solid #00FF00;
-            border-radius: 20px;
-            color: #00FF00;
-            font-size: 0.8rem;
-        }
-
-        /* Live Tracker */
-        .live-tracker {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .tracker-item {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #FFD700;
-            border-radius: 15px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .tracker-icon {
-            font-size: 2rem;
-            color: #FFD700;
-        }
-
-        .tracker-label {
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        .tracker-value {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* Assessment Area */
-        .assessment-area {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .panel {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #FFD700;
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .upload-zone {
-            border: 3px dashed rgba(255,215,0,0.3);
-            border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .upload-zone:hover {
-            border-color: #FFD700;
-            background: rgba(255,215,0,0.05);
-        }
-
-        .upload-zone i {
-            font-size: 4rem;
-            color: #FFD700;
-            margin-bottom: 1rem;
-        }
-
-        /* Damage Meters */
-        .damage-meter {
-            margin: 1.5rem 0;
-        }
-
-        .meter-item {
-            margin-bottom: 1rem;
-        }
-
-        .meter-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.3rem;
-        }
-
-        .meter-bar {
-            height: 25px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .meter-fill {
-            height: 100%;
-            transition: width 1.5s;
-        }
-
-        .meter-fill.low { background: linear-gradient(90deg, #4CAF50, #8BC34A); }
-        .meter-fill.medium { background: linear-gradient(90deg, #FFC107, #FF9800); }
-        .meter-fill.high { background: linear-gradient(90deg, #F44336, #D32F2F); }
-
-        /* Live Feed */
-        .live-feed {
-            max-width: 1800px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .feed-container {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid #00FF00;
-            border-radius: 15px;
-            padding: 1.5rem;
-            height: 250px;
-            overflow-y: auto;
-            font-family: 'Share Tech Mono', monospace;
-        }
-
-        .feed-item {
-            padding: 0.5rem;
-            border-bottom: 1px solid rgba(0,255,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: slideIn 0.5s;
-        }
-
-        .feed-time {
-            color: #00FF00;
-            font-size: 0.8rem;
-        }
-
-        .feed-type {
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.7rem;
-        }
-
-        .feed-type.ARMY { background: #4B5320; }
-        .feed-type.NAVY { background: #000080; }
-        .feed-type.AIRFORCE { background: #003153; }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #000000, #0A1F44);
-            padding: 3rem 2rem;
-            margin-top: 3rem;
-            border-top: 2px solid #FFD700;
-        }
-
-        .footer-grid {
-            max-width: 1800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            color: #FFD700;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.5rem;
-            color: #aaa;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .force-selector,
-            .tri-stats,
-            .live-tracker,
-            .assessment-area {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Borra Pardhu | Animated Portfolio Slideshow</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    /* main container */
+    .portfolio-container {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(18, 25, 45, 0.55);
+      backdrop-filter: blur(3px);
+      border-radius: 3rem;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    /* slide wrapper */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      min-height: 550px;
+      perspective: 1200px;
+    }
+
+    .slide {
+      background: radial-gradient(circle at 10% 20%, rgba(255,255,245,0.1), rgba(10,20,40,0.7));
+      backdrop-filter: blur(12px);
+      border-radius: 2.5rem;
+      padding: 2rem 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: fadeGlow 0.8s ease-out;
+    }
+
+    @keyframes fadeGlow {
+      0% { opacity: 0; transform: translateY(30px) scale(0.96); filter: blur(4px);}
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0);}
+    }
+
+    /* colorful headers */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-title {
+      font-size: 2.4rem;
+      background: linear-gradient(135deg, #FFD166, #FF6B6B, #4ECDC4, #9B5DE5);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientFlow 5s ease infinite;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      border-left: 5px solid #FFD166;
+      padding-left: 1.2rem;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%;}
+      100% { background-position: 0% 50%;}
+    }
+
+    /* card & grid styling */
+    .resume-grid, .skills-grid, .extra-grid, .enhance-list, .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .info-card {
+      background: rgba(15, 25, 45, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,215,0,0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: #FFB347;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+      background: rgba(30, 45, 75, 0.8);
+    }
+
+    .info-card i {
+      color: #FFD166;
+      font-size: 1.8rem;
+      margin-right: 0.7rem;
+    }
+
+    .badge {
+      background: linear-gradient(120deg, #FF6B6B, #FF8E53);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+
+    /* navigation */
+    .nav-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,240,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,209,102,0.5);
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn:hover {
+      background: #FFB347;
+      color: #0a0f1e;
+      border-color: white;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(255,180,70,0.6);
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 20px;
+      background: rgba(255,255,200,0.4);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .dot.active {
+      background: #FFD166;
+      width: 30px;
+      box-shadow: 0 0 10px #FFB347;
+    }
+
+    /* certificate image simulation */
+    .cert-sim {
+      background: linear-gradient(145deg, #1e2a3a, #0f1722);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px dashed gold;
+    }
+
+    .cert-icon {
+      font-size: 4rem;
+      color: #FFD966;
+      margin-bottom: 0.5rem;
+    }
+
+    /* animated floating */
+    @keyframes floatSoft {
+      0% { transform: translateY(0px);}
+      100% { transform: translateY(-5px);}
+    }
+
+    .photo-placeholder {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(145deg, #3b4b6e, #1f2a44);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border: 3px solid #FFD166;
+      box-shadow: 0 0 20px rgba(255,209,102,0.5);
+      margin-bottom: 1rem;
+      animation: floatSoft 3s infinite alternate;
+    }
+
+    .btn-download {
+      background: none;
+      border: none;
+      color: white;
+      margin-left: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 680px) {
+      .portfolio-container { padding: 1rem; }
+      .slide-title { font-size: 1.7rem; }
+      .slide { padding: 1.3rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="tricolor-strip"></div>
+<div class="portfolio-container">
+  <div class="slideshow" id="slideshowRoot">
+    <!-- slides will be injected via js -->
+  </div>
+  <div class="dots" id="dotsContainer"></div>
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevSlideBtn"><i class="fas fa-arrow-left"></i> Previous</button>
+    <button class="nav-btn" id="nextSlideBtn">Next <i class="fas fa-arrow-right"></i></button>
+  </div>
+  <footer>
+    <i class="fas fa-magic"></i> Animated Portfolio | Borra Pardhu | AI Powered Design
+  </footer>
+</div>
 
-    <!-- Header -->
-    <header class="drdo-header">
-        <div class="header-container">
-            <div class="logo-section">
-                <div class="drdo-emblem">DRDO</div>
-                <div class="title-section">
-                    <h1>DEFENCE RESEARCH & DEVELOPMENT ORGANISATION</h1>
-                    <h2>TRI-SERVICES ADVANCED BATTLEFIELD ASSESSMENT SYSTEM</h2>
-                </div>
-            </div>
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i> TOP SECRET // COSMIC
-            </div>
+<script>
+  // ========== SLIDES DATA (6 slides exactly) ==========
+  const slidesData = [
+    { // Slide 1 - Personal Statement
+      title: "✨ Personal Statement",
+      content: `
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+          <div style="flex:1; min-width: 180px; text-align: center;">
+            <div class="photo-placeholder"><i class="fas fa-user-astronaut" style="font-size: 4rem;"></i></div>
+            <div class="badge"><i class="fas fa-graduation-cap"></i> B.Tech IT - 1st Year</div>
+          </div>
+          <div style="flex:2">
+            <h3 style="color:#FFE6A7; margin-bottom: 1rem;">👋 Hello, I'm Borra Pardhu</h3>
+            <p style="font-size:1.1rem; line-height:1.4;">Motivated IT student passionate about <strong class="highlight" style="color:#FFD966;">web development & AI tools</strong>. I aim to become a smart web designer who builds future-ready solutions. I love solving problems, learning new tech, and working with creative teams.</p>
+            <div style="margin-top: 1.2rem;"><i class="fas fa-rocket" style="color:#FFB347;"></i> <strong>Career Goal:</strong> Innovate using AI & web technologies</div>
+            <div><i class="fas fa-heart" style="color:#FF6B6B;"></i> <strong>Interests:</strong> Coding, AI design, reading tech blogs</div>
+          </div>
         </div>
-    </header>
-
-    <!-- Developer Info -->
-    <div style="background: linear-gradient(90deg, #000000, #0A1F44); padding: 0.5rem 2rem; border-bottom: 1px solid #FFD700;">
-        <div style="max-width: 1800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; color: #aaa;">
-            <span><i class="fas fa-user"></i> Developed by: <span style="color: #FFD700;">DR. ARIJIT DAS</span> | DRDO Applicant</span>
-            <span><i class="fas fa-microchip"></i> Tri-Services AI v3.0 | 98.5% Accuracy</span>
+      `
+    },
+    { // Slide 2 - Resume / CV
+      title: "📄 Resume / CV",
+      content: `
+        <div class="resume-grid">
+          <div class="info-card"><i class="fas fa-user-graduate"></i> <strong>Education</strong><br>B.Tech (IT) – 82.3%<br>Intermediate (MPC) – 92.4% (2025)<br>SSC – 84% (2025)</div>
+          <div class="info-card"><i class="fas fa-code"></i> <strong>Tech Skills</strong><br>C, MS Office, Excel<br>Web Design (AI Tools)</div>
+          <div class="info-card"><i class="fas fa-comments"></i> <strong>Soft Skills</strong><br>Communication, Teamwork, Problem solving</div>
+          <div class="info-card"><i class="fas fa-language"></i> <strong>Languages</strong><br>Telugu, English, Hindi</div>
+          <div class="info-card"><i class="fas fa-envelope"></i> <strong>Contact</strong><br>📧 pardhuborra018@gmail.com<br>📞 7842554591</div>
+          <div class="info-card"><i class="fas fa-map-marker-alt"></i> <strong>Location</strong><br>Andhra Pradesh, India</div>
         </div>
-    </div>
-
-    <!-- Force Selector -->
-    <div class="force-selector">
-        <div class="force-card army active" onclick="selectForce('army')" id="forceArmy">
-            <div class="force-icon">⚔️</div>
-            <div class="force-name">INDIAN ARMY</div>
-            <div class="force-motto">"Service Before Self"</div>
+      `
+    },
+    { // Slide 3 - Evidence of Growth & Skills
+      title: "📈 Evidence of Growth & Skills",
+      content: `
+        <div class="skills-grid">
+          <div class="info-card"><i class="fab fa-cuttlefish"></i> <strong>C Programming</strong><div class="progress" style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:85%; background:#FFB347; border-radius:20px; padding:3px 0;"></div></div> Problem solving & logic</div>
+          <div class="info-card"><i class="fas fa-file-excel"></i> <strong>MS Office & Excel</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:80%; background:#4ECDC4; border-radius:20px; padding:3px 0;"></div></div> Data handling & docs</div>
+          <div class="info-card"><i class="fas fa-globe"></i> <strong>Web Designing (AI tools)</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:75%; background:#9B5DE5; border-radius:20px; padding:3px 0;"></div></div> Smart web layout</div>
+          <div class="info-card"><i class="fas fa-brain"></i> <strong>AI Tools for Dev</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:70%; background:#FF6B6B; border-radius:20px; padding:3px 0;"></div></div> Workshop certified</div>
+          <div class="info-card"><i class="fas fa-users"></i> <strong>Teamwork & Communication</strong><div>Active collaboration in college projects</div></div>
         </div>
-        <div class="force-card navy" onclick="selectForce('navy')" id="forceNavy">
-            <div class="force-icon">⚓</div>
-            <div class="force-name">INDIAN NAVY</div>
-            <div class="force-motto">"Sham No Varunah"</div>
+        <p style="margin-top: 1rem; font-size:0.9rem;"><i class="fas fa-chart-line" style="color:#FFD166;"></i> From basic coding to AI-assisted web design — consistent growth!</p>
+      `
+    },
+    { // Slide 4 - Extra Curricular Works (certificate)
+      title: "🏆 Extra Curricular & Workshops",
+      content: `
+        <div class="extra-grid">
+          <div class="info-card" style="grid-column: span 2;">
+            <i class="fas fa-certificate" style="font-size:2rem;"></i>
+            <h3>✨ 2-Day Workshop on "Smart Web Design using AI Tools"</h3>
+            <p><strong>Dates:</strong> 26-02-2026 to 27-02-2026<br>
+            <strong>Organized by:</strong> Dept. of IT & Brainovision Solutions India Pvt. Ltd.<br>
+            <strong>Venue:</strong> Gudlavalleru Engineering College</p>
+            <div class="cert-sim">
+              <div class="cert-icon"><i class="fas fa-award"></i> <i class="fas fa-laptop-code"></i></div>
+              <p style="font-weight:600;">✔ Participation Certificate Earned</p>
+              <span style="background:gold; color:#111; border-radius: 20px; padding: 4px 12px;">Hands-on AI web design</span>
+            </div>
+          </div>
+          <div class="info-card"><i class="fas fa-microphone-alt"></i> <strong>Technical Events</strong><br>Active participant in college fests & coding quizzes</div>
+          <div class="info-card"><i class="fas fa-hands-helping"></i> <strong>Community</strong><br>Volunteer for tech awareness drives</div>
         </div>
-        <div class="force-card airforce" onclick="selectForce('airforce')" id="forceAirforce">
-            <div class="force-icon">✈️</div>
-            <div class="force-name">INDIAN AIR FORCE</div>
-            <div class="force-motto">"Touch The Sky With Glory"</div>
+      `
+    },
+    { // Slide 5 - Additional Enhancements (personal projects)
+      title: "🚀 Additional Enhancements",
+      content: `
+        <div class="enhance-list" style="display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1rem;">
+          <div class="info-card"><i class="fas fa-file-alt"></i> <strong>Resume & Portfolio</strong><br>Designed professional resume and this animated portfolio.</div>
+          <div class="info-card"><i class="fas fa-robot"></i> <strong>AI tools exploration</strong><br>Used ChatGPT, Canva AI for content & layouts.</div>
+          <div class="info-card"><i class="fas fa-code-branch"></i> <strong>Website practice</strong><br>Built basic website layouts with HTML/CSS and AI assistance.</div>
+          <div class="info-card"><i class="fas fa-blog"></i> <strong>Future blog plan</strong><br>Planning to launch personal blog on web design tips.</div>
+          <div class="info-card"><i class="fas fa-video"></i> <strong>Multimedia</strong><br>Creating short demo reels of projects.</div>
         </div>
-    </div>
-
-    <!-- Tri-Services Stats -->
-    <div class="tri-stats" id="triStats">
-        <!-- Dynamic stats will be inserted here -->
-    </div>
-
-    <!-- Commands Section -->
-    <div class="commands-section">
-        <h2 class="section-title" id="commandsTitle">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>INDIAN ARMY COMMAND HEADQUARTERS</span>
-        </h2>
-        <div class="commands-grid" id="commandsGrid"></div>
-    </div>
-
-    <!-- Live Tracker -->
-    <div class="live-tracker" id="liveTracker">
-        <!-- Dynamic tracker will be inserted here -->
-    </div>
-
-    <!-- Assets Section -->
-    <div class="assets-section">
-        <h2 class="section-title" id="assetsTitle">
-            <i class="fas fa-bolt"></i>
-            <span>ACTIVE ASSETS & WEAPONS SYSTEMS</span>
-        </h2>
-        <div class="assets-grid" id="assetsGrid"></div>
-    </div>
-
-    <!-- Assessment Area -->
-    <div class="assessment-area">
-        <!-- Upload Panel -->
-        <div class="panel">
-            <h2 class="section-title" style="font-size: 1.5rem;">
-                <i class="fas fa-cloud-upload-alt"></i>
-                UPLOAD INTELLIGENCE IMAGERY
-            </h2>
-            
-            <div class="upload-zone" id="uploadBox">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h3>Drag & Drop or Click to Upload</h3>
-                <p style="color: #aaa;">Supports: JPG, PNG, TIFF, RAW (Max: 500MB)</p>
-                <input type="file" id="fileInput" accept="image/*" hidden>
-            </div>
-
-            <div id="previewContainer" style="display: none; margin-top: 1rem;">
-                <img id="previewImage" style="max-width: 100%; max-height: 300px; border-radius: 10px; border: 2px solid #FFD700;">
-                <button onclick="removeImage()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #DC143C; color: white; border: none; border-radius: 5px; cursor: pointer;">Remove</button>
-            </div>
-
-            <button class="analyze-btn" id="analyzeBtn" onclick="analyzeImage()" disabled style="width: 100%; margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #003366, #000000); color: white; border: 2px solid #FFD700; border-radius: 10px; font-size: 1.2rem; cursor: pointer;">
-                <i class="fas fa-microchip"></i> RUN TRI-SERVICES AI ANALYSIS
-            </button>
+        <div class="badge" style="margin-top: 1rem;"><i class="fas fa-lightbulb"></i> Always learning, always building</div>
+      `
+    },
+    { // Slide 6 - AI Tools Used
+      title: "🤖 AI Tools Used",
+      content: `
+        <div class="ai-grid" style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center;">
+          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-canva" style="font-size:3rem;"></i><br><strong>Canva</strong><br>Slide design & graphics</div>
+          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-google"></i><br><strong>Google Sites</strong><br>Online portfolio (future)</div>
+          <div class="info-card" style="text-align:center; width:160px;"><i class="fas fa-comment-dots"></i><br><strong>ChatGPT</strong><br>Content structuring</div>
+          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-wix"></i><br><strong>Wix</strong><br>(Upcoming website)</div>
+          <div class="info-card" style="text-align:center; width:160px;"><i class="fas fa-chalkboard"></i><br><strong>PowerPoint + AI</strong><br>Presentation flow</div>
         </div>
+        <p style="margin-top: 1.5rem; text-align:center; background: rgba(0,0,0,0.3); border-radius: 2rem; padding: 0.7rem;"><i class="fas fa-magic"></i> This portfolio was built using HTML/CSS/JS & AI-enhanced animations — fully interactive.</p>
+      `
+    }
+  ];
 
-        <!-- Results Panel -->
-        <div class="panel" id="resultsPanel" style="display: none;">
-            <h2 class="section-title" style="font-size: 1.5rem;">
-                <i class="fas fa-chart-pie"></i>
-                DAMAGE ASSESSMENT REPORT
-            </h2>
+  let currentIndex = 0;
+  const slideshowRoot = document.getElementById('slideshowRoot');
+  const dotsContainer = document.getElementById('dotsContainer');
 
-            <div class="damage-meter">
-                <div class="meter-item">
-                    <div class="meter-header">
-                        <span><i class="fas fa-circle" style="color: #4CAF50;"></i> Low Damage</span>
-                        <span id="lowPercent">0%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill low" id="lowBar" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="meter-item">
-                    <div class="meter-header">
-                        <span><i class="fas fa-circle" style="color: #FFC107;"></i> Medium Damage</span>
-                        <span id="mediumPercent">0%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill medium" id="mediumBar" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="meter-item">
-                    <div class="meter-header">
-                        <span><i class="fas fa-circle" style="color: #F44336;"></i> High Damage</span>
-                        <span id="highPercent">0%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill high" id="highBar" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
-                <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px;">
-                    <span style="color: #aaa;">Primary Damage</span>
-                    <h3 id="primaryDamage" style="color: #FFD700;">-</h3>
-                </div>
-                <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px;">
-                    <span style="color: #aaa;">Confidence</span>
-                    <h3 id="confidenceLevel" style="color: #FFD700;">-</h3>
-                </div>
-            </div>
-
-            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,255,0,0.1); border: 1px solid #00FF00; border-radius: 10px;">
-                <i class="fas fa-certificate" style="color: #00FF00;"></i>
-                <span style="margin-left: 0.5rem;">AI Model Accuracy: 98.5% | Validated on 50,000+ images</span>
-            </div>
+  function renderSlide(index) {
+    // wrap index safely
+    const safeIndex = (index + slidesData.length) % slidesData.length;
+    const slide = slidesData[safeIndex];
+    const slideHTML = `
+      <div class="slide" key=${safeIndex}>
+        <h2 class="slide-title"><i class="fas fa-layer-group"></i> ${slide.title}</h2>
+        <div class="slide-content">
+          ${slide.content}
         </div>
-    </div>
-
-    <!-- Live Intelligence Feed -->
-    <div class="live-feed">
-        <h2 class="section-title">
-            <i class="fas fa-satellite-dish"></i>
-            TRI-SERVICES LIVE INTELLIGENCE FEED
-        </h2>
-        <div class="feed-container" id="liveFeed"></div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h4>INDIAN ARMY</h4>
-                <ul>
-                    <li><i class="fas fa-map-pin"></i> 7 Commands</li>
-                    <li><i class="fas fa-users"></i> 1.2M Active Personnel</li>
-                    <li><i class="fas fa-tank"></i> 4,000+ Tanks</li>
-                    <li><i class="fas fa-rocket"></i> 3,000+ Artillery</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>INDIAN NAVY</h4>
-                <ul>
-                    <li><i class="fas fa-ship"></i> 150+ Warships</li>
-                    <li><i class="fas fa-submarine"></i> 15+ Submarines</li>
-                    <li><i class="fas fa-fighter-jet"></i> 50+ Naval Aircraft</li>
-                    <li><i class="fas fa-anchor"></i> 3 Naval Commands</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>INDIAN AIR FORCE</h4>
-                <ul>
-                    <li><i class="fas fa-fighter-jet"></i> 600+ Aircraft</li>
-                    <li><i class="fas fa-helicopter"></i> 200+ Helicopters</li>
-                    <li><i class="fas fa-satellite"></i> 7 Air Commands</li>
-                    <li><i class="fas fa-shield"></i> 40+ Air Bases</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>DRDO LABS</h4>
-                <ul>
-                    <li><i class="fas fa-flask"></i> ADE - Bengaluru</li>
-                    <li><i class="fas fa-flask"></i> ARDE - Pune</li>
-                    <li><i class="fas fa-flask"></i> CAIR - Bengaluru</li>
-                    <li><i class="fas fa-flask"></i> DEAL - Dehradun</li>
-                </ul>
-            </div>
+        <div style="margin-top: 1.2rem; font-size: 0.8rem; opacity:0.7; text-align:right;">
+          <i class="fas fa-arrow-circle-right"></i> Slide ${safeIndex+1} / ${slidesData.length}
         </div>
-        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #FFD700; color: #aaa;">
-            <p>© 2024 DRDO - TRI-SERVICES ADVANCED AI SYSTEM | Developed by DR. ARIJIT DAS</p>
-            <p style="color: #FFD700; margin-top: 0.5rem;">जय हिंद 🇮🇳</p>
-        </div>
-    </footer>
+      </div>
+    `;
+    slideshowRoot.innerHTML = slideHTML;
+    updateDots(safeIndex);
+    currentIndex = safeIndex;
+  }
 
-    <script>
-        // ==============================================
-        // TRI-SERVICES DATABASE - COMPLETE
-        // ==============================================
+  function updateDots(activeIdx) {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < slidesData.length; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === activeIdx) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        renderSlide(i);
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
 
-        const triServices = {
-            army: {
-                name: "INDIAN ARMY",
-                motto: "Service Before Self",
-                color: "#4B5320",
-                icon: "⚔️",
-                commands: [
-                    { name: "WESTERN COMMAND", hq: "Chandimandir", state: "Haryana", lat: "30.74", lng: "76.82", corps: "2,9,11 Corps" },
-                    { name: "EASTERN COMMAND", hq: "Kolkata", state: "West Bengal", lat: "22.57", lng: "88.36", corps: "3,4,33 Corps" },
-                    { name: "NORTHERN COMMAND", hq: "Udhampur", state: "J&K", lat: "32.74", lng: "75.14", corps: "14,15,16 Corps" },
-                    { name: "SOUTHERN COMMAND", hq: "Pune", state: "Maharashtra", lat: "18.52", lng: "73.86", corps: "12,21 Corps" },
-                    { name: "CENTRAL COMMAND", hq: "Lucknow", state: "UP", lat: "26.85", lng: "80.95", corps: "1 Corps" },
-                    { name: "SOUTH-WESTERN", hq: "Jaipur", state: "Rajasthan", lat: "26.91", lng: "75.79", corps: "10 Corps" },
-                    { name: "ARTRAC", hq: "Shimla", state: "HP", lat: "31.10", lng: "77.17", corps: "Training" }
-                ],
-                assets: [
-                    { name: "ARJUN MBT", type: "Main Battle Tank", status: "Active", range: "450km" },
-                    { name: "PINAKA", type: "MLRS", status: "Active", range: "40km" },
-                    { name: "BRAHMOS", type: "Cruise Missile", status: "Active", range: "450km" },
-                    { name: "AKASH", type: "SAM", status: "Operational", range: "25km" },
-                    { name: "NAG", type: "ATGM", status: "Production", range: "4km" },
-                    { name: "T-90", type: "Main Battle Tank", status: "Active", range: "550km" }
-                ],
-                stats: {
-                    personnel: "1.2M",
-                    tanks: "4,000+",
-                    artillery: "3,000+",
-                    aircraft: "500+"
-                }
-            },
-            navy: {
-                name: "INDIAN NAVY",
-                motto: "Sham No Varunah",
-                color: "#000080",
-                icon: "⚓",
-                commands: [
-                    { name: "WESTERN NAVAL COMMAND", hq: "Mumbai", state: "Maharashtra", lat: "18.92", lng: "72.83", fleet: "Western Fleet" },
-                    { name: "EASTERN NAVAL COMMAND", hq: "Visakhapatnam", state: "AP", lat: "17.69", lng: "83.21", fleet: "Eastern Fleet" },
-                    { name: "SOUTHERN NAVAL COMMAND", hq: "Kochi", state: "Kerala", lat: "9.93", lng: "76.27", fleet: "Training" },
-                    { name: "ANDAMAN COMMAND", hq: "Port Blair", state: "A&N", lat: "11.62", lng: "92.72", fleet: "Tri-Service" }
-                ],
-                assets: [
-                    { name: "INS VIKRAMADITYA", type: "Aircraft Carrier", status: "Active", displacement: "45,000t" },
-                    { name: "INS KALVARI", type: "Submarine", status: "Active", class: "Scorpene" },
-                    { name: "INS KOLKATA", type: "Destroyer", status: "Active", armament: "Brahmos" },
-                    { name: "INS TALWAR", type: "Frigate", status: "Active", role: "Anti-ship" },
-                    { name: "INS SARYU", type: "Patrol Vessel", status: "Active", range: "6,000nm" },
-                    { name: "P-8I", type: "Maritime Patrol", status: "Active", role: "ASW" }
-                ],
-                stats: {
-                    ships: "150+",
-                    submarines: "15+",
-                    aircraft: "50+",
-                    personnel: "70,000+"
-                }
-            },
-            airforce: {
-                name: "INDIAN AIR FORCE",
-                motto: "Touch The Sky With Glory",
-                color: "#003153",
-                icon: "✈️",
-                commands: [
-                    { name: "WESTERN AIR COMMAND", hq: "New Delhi", state: "Delhi", lat: "28.61", lng: "77.23", sectors: "Rajasthan, Punjab" },
-                    { name: "EASTERN AIR COMMAND", hq: "Shillong", state: "Meghalaya", lat: "25.57", lng: "91.88", sectors: "North East" },
-                    { name: "CENTRAL AIR COMMAND", hq: "Allahabad", state: "UP", lat: "25.45", lng: "81.85", sectors: "Central" },
-                    { name: "SOUTHERN AIR COMMAND", hq: "Thiruvananthapuram", state: "Kerala", lat: "8.52", lng: "76.93", sectors: "South" },
-                    { name: "SOUTH WESTERN", hq: "Gandhinagar", state: "Gujarat", lat: "23.22", lng: "72.68", sectors: "Gujarat" },
-                    { name: "MAINTENANCE COMMAND", hq: "Nagpur", state: "Maharashtra", lat: "21.14", lng: "79.08", role: "Maintenance" },
-                    { name: "TRAINING COMMAND", hq: "Bengaluru", state: "Karnataka", lat: "12.97", lng: "77.59", role: "Training" }
-                ],
-                assets: [
-                    { name: "SU-30MKI", type: "Fighter", status: "Active", role: "Air Superiority" },
-                    { name: "TEJAS", type: "Light Fighter", status: "Active", role: "Multi-role" },
-                    { name: "RAFAEL", type: "Fighter", status: "Active", role: "Strike" },
-                    { name: "C-17", type: "Transport", status: "Active", role: "Heavy Lift" },
-                    { name: "APACHE", type: "Attack Helicopter", status: "Active", role: "Attack" },
-                    { name: "CHINOOK", type: "Heavy Helicopter", status: "Active", role: "Transport" }
-                ],
-                stats: {
-                    aircraft: "600+",
-                    helicopters: "200+",
-                    bases: "40+",
-                    personnel: "170,000+"
-                }
-            }
-        };
+  function nextSlide() {
+    renderSlide((currentIndex + 1) % slidesData.length);
+  }
+  function prevSlide() {
+    renderSlide((currentIndex - 1 + slidesData.length) % slidesData.length);
+  }
 
-        // Global variables
-        let currentForce = 'army';
-        let selectedImage = null;
-        let feedInterval = null;
+  // initial render
+  renderSlide(0);
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            renderForceStats('army');
-            renderCommands('army');
-            renderAssets('army');
-            renderLiveTracker('army');
-            initializeUpload();
-            startLiveFeed();
-        });
+  // attach event listeners
+  document.getElementById('nextSlideBtn').addEventListener('click', nextSlide);
+  document.getElementById('prevSlideBtn').addEventListener('click', prevSlide);
 
-        function selectForce(force) {
-            currentForce = force;
-            
-            // Update active state
-            document.querySelectorAll('.force-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            document.getElementById(`force${force.charAt(0).toUpperCase() + force.slice(1)}`).classList.add('active');
-            
-            // Update all sections
-            renderForceStats(force);
-            renderCommands(force);
-            renderAssets(force);
-            renderLiveTracker(force);
-            
-            // Update titles
-            document.getElementById('commandsTitle').innerHTML = `
-                <i class="fas fa-map-marked-alt"></i>
-                <span>${triServices[force].name} COMMAND HEADQUARTERS</span>
-            `;
-            
-            document.getElementById('assetsTitle').innerHTML = `
-                <i class="fas fa-bolt"></i>
-                <span>${triServices[force].name} ACTIVE ASSETS</span>
-            `;
-            
-            addFeedItem(`🔄 Switched to ${triServices[force].name} command`, 'INFO', force);
-        }
+  // keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
 
-        function renderForceStats(force) {
-            const data = triServices[force];
-            const stats = document.getElementById('triStats');
-            
-            let statsHtml = '';
-            if (force === 'army') {
-                statsHtml = `
-                    <div class="stat-card army">
-                        <div class="stat-header">
-                            <i class="fas fa-users" style="color: #FFD700;"></i>
-                            <span>Active Personnel</span>
-                        </div>
-                        <div class="stat-value">${data.stats.personnel}</div>
-                    </div>
-                    <div class="stat-card army">
-                        <div class="stat-header">
-                            <i class="fas fa-tank" style="color: #FFD700;"></i>
-                            <span>Main Battle Tanks</span>
-                        </div>
-                        <div class="stat-value">${data.stats.tanks}</div>
-                    </div>
-                    <div class="stat-card army">
-                        <div class="stat-header">
-                            <i class="fas fa-rocket" style="color: #FFD700;"></i>
-                            <span>Artillery Units</span>
-                        </div>
-                        <div class="stat-value">${data.stats.artillery}</div>
-                    </div>
-                `;
-            } else if (force === 'navy') {
-                statsHtml = `
-                    <div class="stat-card navy">
-                        <div class="stat-header">
-                            <i class="fas fa-ship" style="color: #87CEEB;"></i>
-                            <span>Warships</span>
-                        </div>
-                        <div class="stat-value">${data.stats.ships}</div>
-                    </div>
-                    <div class="stat-card navy">
-                        <div class="stat-header">
-                            <i class="fas fa-submarine" style="color: #87CEEB;"></i>
-                            <span>Submarines</span>
-                        </div>
-                        <div class="stat-value">${data.stats.submarines}</div>
-                    </div>
-                    <div class="stat-card navy">
-                        <div class="stat-header">
-                            <i class="fas fa-fighter-jet" style="color: #87CEEB;"></i>
-                            <span>Naval Aircraft</span>
-                        </div>
-                        <div class="stat-value">${data.stats.aircraft}</div>
-                    </div>
-                `;
-            } else {
-                statsHtml = `
-                    <div class="stat-card airforce">
-                        <div class="stat-header">
-                            <i class="fas fa-fighter-jet" style="color: #00BFFF;"></i>
-                            <span>Combat Aircraft</span>
-                        </div>
-                        <div class="stat-value">${data.stats.aircraft}</div>
-                    </div>
-                    <div class="stat-card airforce">
-                        <div class="stat-header">
-                            <i class="fas fa-helicopter" style="color: #00BFFF;"></i>
-                            <span>Helicopters</span>
-                        </div>
-                        <div class="stat-value">${data.stats.helicopters}</div>
-                    </div>
-                    <div class="stat-card airforce">
-                        <div class="stat-header">
-                            <i class="fas fa-base" style="color: #00BFFF;"></i>
-                            <span>Air Bases</span>
-                        </div>
-                        <div class="stat-value">${data.stats.bases}</div>
-                    </div>
-                `;
-            }
-            
-            stats.innerHTML = statsHtml;
-        }
-
-        function renderCommands(force) {
-            const data = triServices[force];
-            const grid = document.getElementById('commandsGrid');
-            
-            grid.innerHTML = '';
-            data.commands.forEach(cmd => {
-                grid.innerHTML += `
-                    <div class="command-card ${force}" onclick="selectCommand('${cmd.name}')">
-                        <div class="command-header">
-                            <i class="fas fa-map-pin"></i>
-                            <span class="command-name">${cmd.name}</span>
-                        </div>
-                        <div class="command-location">📍 ${cmd.hq}, ${cmd.state}</div>
-                        <div class="command-coords">${cmd.lat}°N, ${cmd.lng}°E</div>
-                        <div style="color: #aaa; font-size: 0.8rem; margin-top: 0.5rem;">${cmd.corps || cmd.fleet || cmd.sectors || cmd.role || ''}</div>
-                    </div>
-                `;
-            });
-        }
-
-        function renderAssets(force) {
-            const data = triServices[force];
-            const grid = document.getElementById('assetsGrid');
-            
-            grid.innerHTML = '';
-            data.assets.forEach(asset => {
-                grid.innerHTML += `
-                    <div class="asset-card ${force}">
-                        <div class="asset-name">${asset.name}</div>
-                        <div class="asset-type">${asset.type}</div>
-                        <div style="color: #aaa; margin-bottom: 0.5rem;">${asset.range || asset.displacement || asset.role || ''}</div>
-                        <span class="asset-status">✓ ${asset.status}</span>
-                    </div>
-                `;
-            });
-        }
-
-        function renderLiveTracker(force) {
-            const data = triServices[force];
-            const tracker = document.getElementById('liveTracker');
-            
-            tracker.innerHTML = `
-                <div class="tracker-item">
-                    <i class="fas fa-map-pin tracker-icon"></i>
-                    <div>
-                        <span class="tracker-label">ACTIVE FORCE</span>
-                        <span class="tracker-value">${data.name}</span>
-                    </div>
-                </div>
-                <div class="tracker-item">
-                    <i class="fas fa-bullseye tracker-icon"></i>
-                    <div>
-                        <span class="tracker-label">MOTTO</span>
-                        <span class="tracker-value">${data.motto}</span>
-                    </div>
-                </div>
-                <div class="tracker-item">
-                    <i class="fas fa-shield-halved tracker-icon"></i>
-                    <div>
-                        <span class="tracker-label">THREAT LEVEL</span>
-                        <span class="tracker-value" style="color: ${force === 'army' ? '#DC143C' : force === 'navy' ? '#FFA500' : '#4CAF50'}">
-                            ${force === 'army' ? 'CRITICAL' : force === 'navy' ? 'ELEVATED' : 'GUARDED'}
-                        </span>
-                    </div>
-                </div>
-                <div class="tracker-item">
-                    <i class="fas fa-clock tracker-icon"></i>
-                    <div>
-                        <span class="tracker-label">RESPONSE TIME</span>
-                        <span class="tracker-value">${force === 'army' ? '3min' : force === 'navy' ? '8min' : '5min'}</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        function initializeUpload() {
-            const uploadBox = document.getElementById('uploadBox');
-            const fileInput = document.getElementById('fileInput');
-
-            uploadBox.addEventListener('click', () => fileInput.click());
-            
-            uploadBox.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadBox.style.borderColor = '#FFD700';
-                uploadBox.style.background = 'rgba(255,215,0,0.1)';
-            });
-
-            uploadBox.addEventListener('dragleave', (e) => {
-                e.preventDefault();
-                uploadBox.style.borderColor = 'rgba(255,215,0,0.3)';
-                uploadBox.style.background = 'transparent';
-            });
-
-            uploadBox.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadBox.style.borderColor = 'rgba(255,215,0,0.3)';
-                uploadBox.style.background = 'transparent';
-                handleFileSelect(e.dataTransfer.files[0]);
-            });
-
-            fileInput.addEventListener('change', (e) => handleFileSelect(e.target.files[0]));
-        }
-
-        function handleFileSelect(file) {
-            if (!file || !file.type.startsWith('image/')) {
-                alert('Please select a valid image file');
-                return;
-            }
-
-            selectedImage = file;
-            const reader = new FileReader();
-            
-            reader.onload = (e) => {
-                document.getElementById('previewImage').src = e.target.result;
-                document.getElementById('previewContainer').style.display = 'block';
-                document.getElementById('uploadBox').style.display = 'none';
-                document.getElementById('analyzeBtn').disabled = false;
-                
-                addFeedItem(`📸 Image uploaded: ${file.name}`, 'SUCCESS', currentForce);
-            };
-            
-            reader.readAsDataURL(file);
-        }
-
-        window.removeImage = function() {
-            selectedImage = null;
-            document.getElementById('previewContainer').style.display = 'none';
-            document.getElementById('uploadBox').style.display = 'block';
-            document.getElementById('analyzeBtn').disabled = true;
-            document.getElementById('resultsPanel').style.display = 'none';
-        };
-
-        window.analyzeImage = async function() {
-            if (!selectedImage) return;
-
-            document.getElementById('analyzeBtn').disabled = true;
-            document.getElementById('analyzeBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
-
-            await new Promise(resolve => setTimeout(resolve, 3000));
-
-            // Generate random damage assessment
-            let low, medium, high;
-            
-            if (currentForce === 'army') {
-                low = 25 + Math.random() * 15;
-                medium = 35 + Math.random() * 15;
-                high = 30 + Math.random() * 15;
-            } else if (currentForce === 'navy') {
-                low = 40 + Math.random() * 20;
-                medium = 30 + Math.random() * 15;
-                high = 20 + Math.random() * 15;
-            } else {
-                low = 30 + Math.random() * 15;
-                medium = 40 + Math.random() * 15;
-                high = 20 + Math.random() * 15;
-            }
-
-            const total = low + medium + high;
-            low = (low / total) * 100;
-            medium = (medium / total) * 100;
-            high = (high / total) * 100;
-
-            document.getElementById('resultsPanel').style.display = 'block';
-            
-            setTimeout(() => {
-                document.getElementById('lowBar').style.width = low + '%';
-                document.getElementById('mediumBar').style.width = medium + '%';
-                document.getElementById('highBar').style.width = high + '%';
-                
-                document.getElementById('lowPercent').textContent = low.toFixed(1) + '%';
-                document.getElementById('mediumPercent').textContent = medium.toFixed(1) + '%';
-                document.getElementById('highPercent').textContent = high.toFixed(1) + '%';
-            }, 100);
-
-            let primaryDamage = 'Low Damage';
-            if (high > medium && high > low) primaryDamage = 'High Damage';
-            else if (medium > low) primaryDamage = 'Medium Damage';
-
-            document.getElementById('primaryDamage').textContent = primaryDamage;
-            document.getElementById('confidenceLevel').textContent = (85 + Math.random() * 12).toFixed(1) + '%';
-            
-            document.getElementById('analyzeBtn').disabled = false;
-            document.getElementById('analyzeBtn').innerHTML = '<i class="fas fa-microchip"></i> RUN TRI-SERVICES AI ANALYSIS';
-            
-            addFeedItem(`✅ Analysis complete - ${primaryDamage} detected`, 'SUCCESS', currentForce);
-        };
-
-        function selectCommand(commandName) {
-            addFeedItem(`📍 Selected: ${commandName}`, 'INFO', currentForce);
-        }
-
-        function startLiveFeed() {
-            const feed = document.getElementById('liveFeed');
-            
-            feedInterval = setInterval(() => {
-                const events = [
-                    { msg: `📡 Satellite pass over ${triServices[currentForce].name} sector`, type: 'INFO' },
-                    { msg: `🛰️ High-res imagery received`, type: 'SUCCESS' },
-                    { msg: `⚡ Electronic intelligence detected`, type: 'WARNING' },
-                    { msg: `🎯 Target acquired - Grid ${Math.floor(Math.random() * 10000)}`, type: 'INFO' },
-                    { msg: `🚁 Reconnaissance mission completed`, type: 'SUCCESS' },
-                    { msg: `📊 AI analysis: 98.5% accuracy maintained`, type: 'INFO' }
-                ];
-                
-                const event = events[Math.floor(Math.random() * events.length)];
-                addFeedItem(event.msg, event.type, currentForce);
-            }, 6000);
-
-            // Initial feed items
-            addFeedItem('🟢 TRI-SERVICES AI SYSTEM INITIALIZED', 'SUCCESS', 'army');
-            addFeedItem('📡 All 3 forces connected: ARMY | NAVY | AIR FORCE', 'INFO', 'army');
-            addFeedItem(`📍 Currently monitoring: ${triServices[currentForce].name}`, 'INFO', currentForce);
-        }
-
-        function addFeedItem(message, type, force) {
-            const feed = document.getElementById('liveFeed');
-            const item = document.createElement('div');
-            item.className = 'feed-item';
-            
-            const time = new Date().toLocaleTimeString('en-US', { hour12: false });
-            
-            let forceIcon = '';
-            if (force === 'army') forceIcon = '⚔️';
-            else if (force === 'navy') forceIcon = '⚓';
-            else forceIcon = '✈️';
-            
-            item.innerHTML = `
-                <span class="feed-time">[${time}]</span>
-                <span class="feed-type ${force.toUpperCase()}">${forceIcon} ${force.toUpperCase()}</span>
-                <span style="color: #fff;">${message}</span>
-            `;
-            
-            feed.insertBefore(item, feed.firstChild);
-            
-            if (feed.children.length > 20) {
-                feed.removeChild(feed.lastChild);
-            }
-        }
-
-        // Cleanup
-        window.addEventListener('beforeunload', function() {
-            if (feedInterval) clearInterval(feedInterval);
-        });
-    </script>
+  // additional floating animation for any progress bars (fake progress visuals)
+  // styling progress bars just as simple indicators
+  const style = document.createElement('style');
+  style.textContent = `
+    .progress div, .skills-grid .info-card div div {
+      transition: width 0.5s ease;
+    }
+    .info-card {
+      transition: all 0.25s ease;
+    }
+    .photo-placeholder i {
+      filter: drop-shadow(0 0 6px gold);
+    }
+    .cert-sim:hover {
+      transform: scale(1.01);
+      background: radial-gradient(circle, #2e3e55, #111c2c);
+    }
+  `;
+  document.head.appendChild(style);
+</script>
 </body>
 </html>
