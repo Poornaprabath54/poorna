@@ -1,430 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Borra Pardhu | Animated Portfolio Slideshow</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Borra Pardhu | 3D Premium Portfolio | AI Engineer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #0a0f1e 0%, #0c1222 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Inter', 'Orbitron', sans-serif;
+            overflow-x: hidden;
+            background: #0a0a1a;
+            color: #fff;
+        }
 
-    /* main container */
-    .portfolio-container {
-      max-width: 1300px;
-      width: 100%;
-      background: rgba(18, 25, 45, 0.55);
-      backdrop-filter: blur(3px);
-      border-radius: 3rem;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 25px 45px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
-    }
+        /* 3D Canvas Background */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
 
-    /* slide wrapper */
-    .slideshow {
-      position: relative;
-      width: 100%;
-      min-height: 550px;
-      perspective: 1200px;
-    }
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 20;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
 
-    .slide {
-      background: radial-gradient(circle at 10% 20%, rgba(255,255,245,0.1), rgba(10,20,40,0.7));
-      backdrop-filter: blur(12px);
-      border-radius: 2.5rem;
-      padding: 2rem 2rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      animation: fadeGlow 0.8s ease-out;
-    }
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: rgba(10, 15, 35, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 80px;
+            padding: 0.8rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            animation: slideDown 0.6s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-links a:hover {
+            color: #00d2ff;
+            transform: translateY(-2px);
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+        }
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,210,255,0.3);
+        }
 
-    @keyframes fadeGlow {
-      0% { opacity: 0; transform: translateY(30px) scale(0.96); filter: blur(4px);}
-      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0);}
-    }
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(15, 20, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            transition: all 0.4s ease;
+            animation: fadeUp 0.7s ease backwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
 
-    /* colorful headers */
-    h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            min-height: 70vh;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid #00d2ff;
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5, #7c3aed);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 4s linear infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #00d2ff;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            color: #c4d0ff;
+            line-height: 1.6;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #00d2ff;
+        }
+        .avatar-3d {
+            flex: 1;
+            text-align: center;
+            animation: floatGlow 3s infinite alternate;
+        }
+        @keyframes floatGlow {
+            0% { transform: translateY(0px); filter: drop-shadow(0 0 10px rgba(0,210,255,0.3)); }
+            100% { transform: translateY(-15px); filter: drop-shadow(0 0 30px rgba(0,210,255,0.6)); }
+        }
+        .avatar-circle {
+            width: 260px;
+            height: 260px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 0 50px rgba(0,210,255,0.4);
+        }
+        .avatar-circle i {
+            font-size: 6rem;
+            color: white;
+        }
 
-    .slide-title {
-      font-size: 2.4rem;
-      background: linear-gradient(135deg, #FFD166, #FF6B6B, #4ECDC4, #9B5DE5);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradientFlow 5s ease infinite;
-      margin-bottom: 1.5rem;
-      display: inline-block;
-      border-left: 5px solid #FFD166;
-      padding-left: 1.2rem;
-    }
+        /* Section Titles */
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-left: 4px solid #00d2ff;
+            padding-left: 1rem;
+        }
 
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%;}
-      50% { background-position: 100% 50%;}
-      100% { background-position: 0% 50%;}
-    }
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
 
-    /* card & grid styling */
-    .resume-grid, .skills-grid, .extra-grid, .enhance-list, .ai-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
-      margin-top: 1rem;
-    }
+        .info-card {
+            background: rgba(20, 25, 55, 0.6);
+            border-radius: 1.3rem;
+            padding: 1.3rem;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+            background: rgba(30, 40, 80, 0.8);
+        }
+        .info-card i {
+            font-size: 1.8rem;
+            color: #00d2ff;
+            margin-bottom: 0.8rem;
+        }
+        .info-card h3 {
+            color: #a5f3ff;
+            margin-bottom: 0.5rem;
+        }
 
-    .info-card {
-      background: rgba(15, 25, 45, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 1.8rem;
-      padding: 1.2rem 1.4rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255,215,0,0.3);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+        /* Skill Tags */
+        .skill-tag {
+            display: inline-block;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            transition: 0.2s;
+        }
+        .skill-tag:hover {
+            background: #00d2ff;
+            color: #0a0a1a;
+            transform: scale(1.02);
+        }
 
-    .info-card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: #FFB347;
-      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
-      background: rgba(30, 45, 75, 0.8);
-    }
+        /* Progress Bars */
+        .progress-bar {
+            background: #1a1a3a;
+            border-radius: 30px;
+            height: 8px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            border-radius: 30px;
+            width: 0;
+            transition: width 1.2s ease;
+        }
 
-    .info-card i {
-      color: #FFD166;
-      font-size: 1.8rem;
-      margin-right: 0.7rem;
-    }
+        /* Certificate */
+        .cert-glow {
+            background: linear-gradient(125deg, #0a0f25, #050a18);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #00d2ff;
+            position: relative;
+            overflow: hidden;
+        }
+        .cert-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(115deg, rgba(0,210,255,0.15), transparent 70%);
+            transform: rotate(30deg);
+            animation: shineMove 6s infinite linear;
+        }
+        @keyframes shineMove {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
 
-    .badge {
-      background: linear-gradient(120deg, #FF6B6B, #FF8E53);
-      padding: 0.3rem 1rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 0.8rem;
-    }
+        /* Contact Buttons */
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .contact-btn {
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid #00d2ff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            color: #00d2ff;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-btn:hover {
+            background: #00d2ff;
+            color: #0a0a1a;
+            transform: translateY(-3px);
+        }
 
-    /* navigation */
-    .nav-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0,210,255,0.2);
+            margin-top: 2rem;
+            font-size: 0.75rem;
+        }
 
-    .nav-btn {
-      background: rgba(255,255,240,0.1);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,209,102,0.5);
-      padding: 0.8rem 1.8rem;
-      border-radius: 60px;
-      font-weight: 600;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-btn:hover {
-      background: #FFB347;
-      color: #0a0f1e;
-      border-color: white;
-      transform: scale(1.03);
-      box-shadow: 0 0 12px rgba(255,180,70,0.6);
-    }
-
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 1.5rem 0 0.5rem;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 20px;
-      background: rgba(255,255,200,0.4);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .dot.active {
-      background: #FFD166;
-      width: 30px;
-      box-shadow: 0 0 10px #FFB347;
-    }
-
-    /* certificate image simulation */
-    .cert-sim {
-      background: linear-gradient(145deg, #1e2a3a, #0f1722);
-      border-radius: 1.5rem;
-      padding: 1rem;
-      text-align: center;
-      border: 1px dashed gold;
-    }
-
-    .cert-icon {
-      font-size: 4rem;
-      color: #FFD966;
-      margin-bottom: 0.5rem;
-    }
-
-    /* animated floating */
-    @keyframes floatSoft {
-      0% { transform: translateY(0px);}
-      100% { transform: translateY(-5px);}
-    }
-
-    .photo-placeholder {
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(145deg, #3b4b6e, #1f2a44);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      border: 3px solid #FFD166;
-      box-shadow: 0 0 20px rgba(255,209,102,0.5);
-      margin-bottom: 1rem;
-      animation: floatSoft 3s infinite alternate;
-    }
-
-    .btn-download {
-      background: none;
-      border: none;
-      color: white;
-      margin-left: 10px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 680px) {
-      .portfolio-container { padding: 1rem; }
-      .slide-title { font-size: 1.7rem; }
-      .slide { padding: 1.3rem; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; border-radius: 1.5rem; padding: 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .avatar-circle { width: 180px; height: 180px; }
+            .avatar-circle i { font-size: 3.5rem; }
+        }
+    </style>
 </head>
 <body>
-<div class="portfolio-container">
-  <div class="slideshow" id="slideshowRoot">
-    <!-- slides will be injected via js -->
-  </div>
-  <div class="dots" id="dotsContainer"></div>
-  <div class="nav-controls">
-    <button class="nav-btn" id="prevSlideBtn"><i class="fas fa-arrow-left"></i> Previous</button>
-    <button class="nav-btn" id="nextSlideBtn">Next <i class="fas fa-arrow-right"></i></button>
-  </div>
-  <footer>
-    <i class="fas fa-magic"></i> Animated Portfolio | Borra Pardhu | AI Powered Design
-  </footer>
-</div>
 
-<script>
-  // ========== SLIDES DATA (6 slides exactly) ==========
-  const slidesData = [
-    { // Slide 1 - Personal Statement
-      title: "✨ Personal Statement",
-      content: `
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-          <div style="flex:1; min-width: 180px; text-align: center;">
-            <div class="photo-placeholder"><i class="fas fa-user-astronaut" style="font-size: 4rem;"></i></div>
-            <div class="badge"><i class="fas fa-graduation-cap"></i> B.Tech IT - 1st Year</div>
-          </div>
-          <div style="flex:2">
-            <h3 style="color:#FFE6A7; margin-bottom: 1rem;">👋 Hello, I'm Borra Pardhu</h3>
-            <p style="font-size:1.1rem; line-height:1.4;">Motivated IT student passionate about <strong class="highlight" style="color:#FFD966;">web development & AI tools</strong>. I aim to become a smart web designer who builds future-ready solutions. I love solving problems, learning new tech, and working with creative teams.</p>
-            <div style="margin-top: 1.2rem;"><i class="fas fa-rocket" style="color:#FFB347;"></i> <strong>Career Goal:</strong> Innovate using AI & web technologies</div>
-            <div><i class="fas fa-heart" style="color:#FF6B6B;"></i> <strong>Interests:</strong> Coding, AI design, reading tech blogs</div>
-          </div>
-        </div>
-      `
-    },
-    { // Slide 2 - Resume / CV
-      title: "📄 Resume / CV",
-      content: `
-        <div class="resume-grid">
-          <div class="info-card"><i class="fas fa-user-graduate"></i> <strong>Education</strong><br>B.Tech (IT) – 82.3%<br>Intermediate (MPC) – 92.4% (2025)<br>SSC – 84% (2025)</div>
-          <div class="info-card"><i class="fas fa-code"></i> <strong>Tech Skills</strong><br>C, MS Office, Excel<br>Web Design (AI Tools)</div>
-          <div class="info-card"><i class="fas fa-comments"></i> <strong>Soft Skills</strong><br>Communication, Teamwork, Problem solving</div>
-          <div class="info-card"><i class="fas fa-language"></i> <strong>Languages</strong><br>Telugu, English, Hindi</div>
-          <div class="info-card"><i class="fas fa-envelope"></i> <strong>Contact</strong><br>📧 pardhuborra018@gmail.com<br>📞 7842554591</div>
-          <div class="info-card"><i class="fas fa-map-marker-alt"></i> <strong>Location</strong><br>Andhra Pradesh, India</div>
-        </div>
-      `
-    },
-    { // Slide 3 - Evidence of Growth & Skills
-      title: "📈 Evidence of Growth & Skills",
-      content: `
-        <div class="skills-grid">
-          <div class="info-card"><i class="fab fa-cuttlefish"></i> <strong>C Programming</strong><div class="progress" style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:85%; background:#FFB347; border-radius:20px; padding:3px 0;"></div></div> Problem solving & logic</div>
-          <div class="info-card"><i class="fas fa-file-excel"></i> <strong>MS Office & Excel</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:80%; background:#4ECDC4; border-radius:20px; padding:3px 0;"></div></div> Data handling & docs</div>
-          <div class="info-card"><i class="fas fa-globe"></i> <strong>Web Designing (AI tools)</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:75%; background:#9B5DE5; border-radius:20px; padding:3px 0;"></div></div> Smart web layout</div>
-          <div class="info-card"><i class="fas fa-brain"></i> <strong>AI Tools for Dev</strong><div style="background:#2a3a55; border-radius:20px; margin-top:6px;"><div style="width:70%; background:#FF6B6B; border-radius:20px; padding:3px 0;"></div></div> Workshop certified</div>
-          <div class="info-card"><i class="fas fa-users"></i> <strong>Teamwork & Communication</strong><div>Active collaboration in college projects</div></div>
-        </div>
-        <p style="margin-top: 1rem; font-size:0.9rem;"><i class="fas fa-chart-line" style="color:#FFD166;"></i> From basic coding to AI-assisted web design — consistent growth!</p>
-      `
-    },
-    { // Slide 4 - Extra Curricular Works (certificate)
-      title: "🏆 Extra Curricular & Workshops",
-      content: `
-        <div class="extra-grid">
-          <div class="info-card" style="grid-column: span 2;">
-            <i class="fas fa-certificate" style="font-size:2rem;"></i>
-            <h3>✨ 2-Day Workshop on "Smart Web Design using AI Tools"</h3>
-            <p><strong>Dates:</strong> 26-02-2026 to 27-02-2026<br>
-            <strong>Organized by:</strong> Dept. of IT & Brainovision Solutions India Pvt. Ltd.<br>
-            <strong>Venue:</strong> Gudlavalleru Engineering College</p>
-            <div class="cert-sim">
-              <div class="cert-icon"><i class="fas fa-award"></i> <i class="fas fa-laptop-code"></i></div>
-              <p style="font-weight:600;">✔ Participation Certificate Earned</p>
-              <span style="background:gold; color:#111; border-radius: 20px; padding: 4px 12px;">Hands-on AI web design</span>
+    <div id="canvas-container"></div>
+
+    <div class="main-content">
+        <!-- Navigation Bar with Home, Education, Skills, Expertise, Contact -->
+        <div class="navbar">
+            <div class="logo"><i class="fas fa-crown"></i> BORRA PARDHU</div>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+                <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+                <a href="#expertise"><i class="fas fa-brain"></i> Expertise</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             </div>
-          </div>
-          <div class="info-card"><i class="fas fa-microphone-alt"></i> <strong>Technical Events</strong><br>Active participant in college fests & coding quizzes</div>
-          <div class="info-card"><i class="fas fa-hands-helping"></i> <strong>Community</strong><br>Volunteer for tech awareness drives</div>
+            <a href="#contact" class="nav-btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
         </div>
-      `
-    },
-    { // Slide 5 - Additional Enhancements (personal projects)
-      title: "🚀 Additional Enhancements",
-      content: `
-        <div class="enhance-list" style="display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1rem;">
-          <div class="info-card"><i class="fas fa-file-alt"></i> <strong>Resume & Portfolio</strong><br>Designed professional resume and this animated portfolio.</div>
-          <div class="info-card"><i class="fas fa-robot"></i> <strong>AI tools exploration</strong><br>Used ChatGPT, Canva AI for content & layouts.</div>
-          <div class="info-card"><i class="fas fa-code-branch"></i> <strong>Website practice</strong><br>Built basic website layouts with HTML/CSS and AI assistance.</div>
-          <div class="info-card"><i class="fas fa-blog"></i> <strong>Future blog plan</strong><br>Planning to launch personal blog on web design tips.</div>
-          <div class="info-card"><i class="fas fa-video"></i> <strong>Multimedia</strong><br>Creating short demo reels of projects.</div>
+
+        <!-- Hero Section -->
+        <div id="home" class="glass-card hero">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-crown"></i> AI-Powered Developer</div>
+                <h1>BORRA PARDHU</h1>
+                <div class="hero-tagline"><i class="fas fa-code"></i> Software Developer | AI Enthusiast</div>
+                <p>Passionate Software Developer with strong foundations in C, C++, Python, and Java. Building modern, futuristic web applications using AI tools. Quick learner with strong logical thinking and adaptability.</p>
+                <div class="hero-stats">
+                    <div><span class="stat-number">5+</span><br>Technologies</div>
+                    <div><span class="stat-number">3</span><br>Languages</div>
+                    <div><span class="stat-number">6+</span><br>Projects</div>
+                </div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#contact" class="contact-btn" style="background: #00d2ff; color: #0a0a1a;">Get in touch <i class="fas fa-arrow-right"></i></a>
+                    <a href="#education" class="contact-btn">View Resume <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+            <div class="avatar-3d">
+                <div class="avatar-circle">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+            </div>
         </div>
-        <div class="badge" style="margin-top: 1rem;"><i class="fas fa-lightbulb"></i> Always learning, always building</div>
-      `
-    },
-    { // Slide 6 - AI Tools Used
-      title: "🤖 AI Tools Used",
-      content: `
-        <div class="ai-grid" style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center;">
-          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-canva" style="font-size:3rem;"></i><br><strong>Canva</strong><br>Slide design & graphics</div>
-          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-google"></i><br><strong>Google Sites</strong><br>Online portfolio (future)</div>
-          <div class="info-card" style="text-align:center; width:160px;"><i class="fas fa-comment-dots"></i><br><strong>ChatGPT</strong><br>Content structuring</div>
-          <div class="info-card" style="text-align:center; width:160px;"><i class="fab fa-wix"></i><br><strong>Wix</strong><br>(Upcoming website)</div>
-          <div class="info-card" style="text-align:center; width:160px;"><i class="fas fa-chalkboard"></i><br><strong>PowerPoint + AI</strong><br>Presentation flow</div>
+
+        <!-- Profile -->
+        <div class="glass-card">
+            <i class="fas fa-user-circle" style="font-size: 2rem; color: #00d2ff;"></i>
+            <h2 class="section-title" style="margin-top: 0.5rem;">Profile</h2>
+            <p style="font-size: 1.05rem;">Enthusiastic and motivated Information Technology student with strong foundational knowledge in C, C++, Python, and Java. Skilled in web technologies including HTML, CSS, JavaScript, and AI tools. Hands-on experience through academic labs and coding practice. Quick learner with strong logical thinking and adaptability.</p>
         </div>
-        <p style="margin-top: 1.5rem; text-align:center; background: rgba(0,0,0,0.3); border-radius: 2rem; padding: 0.7rem;"><i class="fas fa-magic"></i> This portfolio was built using HTML/CSS/JS & AI-enhanced animations — fully interactive.</p>
-      `
-    }
-  ];
 
-  let currentIndex = 0;
-  const slideshowRoot = document.getElementById('slideshowRoot');
-  const dotsContainer = document.getElementById('dotsContainer');
-
-  function renderSlide(index) {
-    // wrap index safely
-    const safeIndex = (index + slidesData.length) % slidesData.length;
-    const slide = slidesData[safeIndex];
-    const slideHTML = `
-      <div class="slide" key=${safeIndex}>
-        <h2 class="slide-title"><i class="fas fa-layer-group"></i> ${slide.title}</h2>
-        <div class="slide-content">
-          ${slide.content}
+        <!-- Education -->
+        <div id="education" class="glass-card">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="grid-2">
+                <div class="info-card"><i class="fas fa-university"></i><h3>B.Tech (IT)</h3><p>Sheshadri Rao Gudlavalleru Engineering College<br><strong>82.3%</strong> (First Year)</p></div>
+                <div class="info-card"><i class="fas fa-school"></i><h3>Intermediate (MPC)</h3><p>Sri Chaitanya Junior College<br><strong>92.4%</strong> (2025)</p></div>
+                <div class="info-card"><i class="fas fa-chalkboard"></i><h3>10th Class (SSC)</h3><p>Indo-Saxon EM High School<br><strong>84%</strong> (2023)</p></div>
+            </div>
         </div>
-        <div style="margin-top: 1.2rem; font-size: 0.8rem; opacity:0.7; text-align:right;">
-          <i class="fas fa-arrow-circle-right"></i> Slide ${safeIndex+1} / ${slidesData.length}
+
+        <!-- Skills Section -->
+        <div id="skills" class="glass-card">
+            <h2 class="section-title"><i class="fas fa-microchip"></i> Technical Skills</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming Languages</h3>
+                    <div><span class="skill-tag">C</span><span class="skill-tag">C++</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span></div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Technologies</h3>
+                    <div><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">AI Tools</span></div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Languages</h3>
+                    <div><span class="skill-tag">Telugu</span><span class="skill-tag">English</span><span class="skill-tag">Hindi</span></div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Skill Mastery</h3>
+                    <div>C/C++ <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div></div>
+                    <div>Python/Java <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div></div>
+                    <div>Web Dev <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+                </div>
+            </div>
         </div>
-      </div>
-    `;
-    slideshowRoot.innerHTML = slideHTML;
-    updateDots(safeIndex);
-    currentIndex = safeIndex;
-  }
 
-  function updateDots(activeIdx) {
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < slidesData.length; i++) {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (i === activeIdx) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        renderSlide(i);
-      });
-      dotsContainer.appendChild(dot);
-    }
-  }
+        <!-- Expertise Section (replaced Services) -->
+        <div id="expertise" class="glass-card">
+            <h2 class="section-title"><i class="fas fa-brain"></i> Core Expertise</h2>
+            <div class="grid-3">
+                <div class="info-card" style="text-align: center;"><i class="fas fa-laptop-code"></i><h3>Full Stack Development</h3><p>Modern responsive web applications</p></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-robot"></i><h3>AI Integration</h3><p>ChatGPT, AI-powered solutions</p></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-database"></i><h3>Problem Solving</h3><p>DSA & logical programming</p></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-mobile-alt"></i><h3>Responsive Design</h3><p>Mobile-first interfaces</p></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-cloud"></i><h3>Cloud Basics</h3><p>Deployment & hosting</p></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-shield-alt"></i><h3>Best Practices</h3><p>Clean code & optimization</p></div>
+            </div>
+        </div>
 
-  function nextSlide() {
-    renderSlide((currentIndex + 1) % slidesData.length);
-  }
-  function prevSlide() {
-    renderSlide((currentIndex - 1 + slidesData.length) % slidesData.length);
-  }
+        <!-- Workshop Certificate -->
+        <div class="glass-card">
+            <h2 class="section-title"><i class="fas fa-award"></i> Certification</h2>
+            <div class="cert-glow">
+                <i class="fas fa-certificate" style="font-size: 2rem; color: #00d2ff;"></i>
+                <h3 style="color: #a5f3ff;">✨ Smart Web Design using AI Tools Workshop</h3>
+                <p><strong>📅 26-02-2026 to 27-02-2026</strong><br>Dept. of IT & Brainovision Solutions India Pvt. Ltd.<br>📍 Gudlavalleru Engineering College</p>
+                <div style="background: #00d2ff; color: #0a0a1a; display: inline-block; padding: 6px 20px; border-radius: 40px;">✅ Certificate Earned</div>
+            </div>
+        </div>
 
-  // initial render
-  renderSlide(0);
+        <!-- Strengths -->
+        <div class="glass-card">
+            <h2 class="section-title"><i class="fas fa-star"></i> Strengths</h2>
+            <div class="grid-3">
+                <div class="info-card" style="text-align: center;"><i class="fas fa-bolt"></i><h3>Quick Learner</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-brain"></i><h3>Logical Thinking</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-handshake"></i><h3>Team Collaboration</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-chart-line"></i><h3>Adaptability</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-cricket-ball"></i><h3>Cricket</h3></div>
+                <div class="info-card" style="text-align: center;"><i class="fas fa-book"></i><h3>Reading</h3></div>
+            </div>
+        </div>
 
-  // attach event listeners
-  document.getElementById('nextSlideBtn').addEventListener('click', nextSlide);
-  document.getElementById('prevSlideBtn').addEventListener('click', prevSlide);
+        <!-- Contact Section -->
+        <div id="contact" class="glass-card" style="text-align: center;">
+            <i class="fas fa-paper-plane" style="font-size: 2.5rem; color: #00d2ff;"></i>
+            <h2 class="section-title" style="display: block; text-align: center;">Get in touch</h2>
+            <p>Let's connect and build something amazing together!</p>
+            <div class="contact-grid">
+                <a href="mailto:pardhuborra018@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> pardhuborra018@gmail.com</a>
+                <a href="#" class="contact-btn"><i class="fas fa-phone-alt"></i> +91 7842554591</a>
+                <a href="#" class="contact-btn"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
 
-  // keyboard navigation
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
-  });
+        <footer>
+            <i class="fas fa-crown" style="color: #00d2ff;"></i> Borra Pardhu | 3D Premium Portfolio | AI-Powered
+        </footer>
+    </div>
 
-  // additional floating animation for any progress bars (fake progress visuals)
-  // styling progress bars just as simple indicators
-  const style = document.createElement('style');
-  style.textContent = `
-    .progress div, .skills-grid .info-card div div {
-      transition: width 0.5s ease;
-    }
-    .info-card {
-      transition: all 0.25s ease;
-    }
-    .photo-placeholder i {
-      filter: drop-shadow(0 0 6px gold);
-    }
-    .cert-sim:hover {
-      transform: scale(1.01);
-      background: radial-gradient(circle, #2e3e55, #111c2c);
-    }
-  `;
-  document.head.appendChild(style);
-</script>
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- 3D Background: Premium Look ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a1a);
+        scene.fog = new THREE.FogExp2(0x0a0a1a, 0.003);
+
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 1.2, 12);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x222244);
+        scene.add(ambientLight);
+        const mainLight = new THREE.DirectionalLight(0xffffff, 1);
+        mainLight.position.set(2, 3, 4);
+        scene.add(mainLight);
+        const fillLight = new THREE.PointLight(0x00d2ff, 0.5);
+        fillLight.position.set(1, 2, 3);
+        scene.add(fillLight);
+
+        // Central Object: Glowing Torus Knot
+        const knotGeo = new THREE.TorusKnotGeometry(1.0, 0.25, 180, 24, 3, 4);
+        const knotMat = new THREE.MeshStandardMaterial({ color: 0x00d2ff, emissive: 0x0066aa, emissiveIntensity: 0.6, metalness: 0.7, roughness: 0.3 });
+        const knot = new THREE.Mesh(knotGeo, knotMat);
+        scene.add(knot);
+
+        // Orbiting Rings
+        const ringGeo = new THREE.TorusGeometry(1.6, 0.05, 128, 200);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0x3a7bd5, emissive: 0x224466 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        scene.add(ring);
+
+        const ring2Geo = new THREE.TorusGeometry(2.0, 0.04, 128, 200);
+        const ring2Mat = new THREE.MeshStandardMaterial({ color: 0x7c3aed, emissive: 0x331177 });
+        const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+        scene.add(ring2);
+
+        // Particle System
+        const particleCount = 1500;
+        const particlesGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+            const radius = 3 + Math.random() * 4;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            positions[i*3] = radius * Math.sin(phi) * Math.cos(theta);
+            positions[i*3+1] = radius * Math.sin(phi) * Math.sin(theta) * 0.5;
+            positions[i*3+2] = radius * Math.cos(phi);
+        }
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particleMat = new THREE.PointsMaterial({ color: 0x00d2ff, size: 0.06, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending });
+        const particles = new THREE.Points(particlesGeo, particleMat);
+        scene.add(particles);
+
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            
+            knot.rotation.x += 0.008;
+            knot.rotation.y += 0.012;
+            ring.rotation.x += 0.004;
+            ring.rotation.z += 0.006;
+            ring2.rotation.y += 0.005;
+            ring2.rotation.x += 0.003;
+            particles.rotation.y += 0.001;
+            
+            camera.position.x += (0 - camera.position.x) * 0.02;
+            camera.position.y += (1.0 - camera.position.y) * 0.02;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+            camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.03;
+            camera.position.y += (-mouseY * 0.2 + 0.8 - camera.position.y) * 0.03;
+            camera.lookAt(0, 0, 0);
+        });
+    </script>
 </body>
 </html>
