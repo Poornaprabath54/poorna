@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N. Poorna Prabath | Portfolio</title>
+    <style>
+        /* --- Global & Animations Layer --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0b0f19;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Continuous subtle glow effect for tech elements */
+        @keyframes neonGlow {
+            0% { box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2); }
+            50% { box-shadow: 0 5px 25px rgba(217, 70, 239, 0.4); }
+            100% { box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2); }
+        }
+
+        /* --- Temporary Placeholder Sections to Show Perfect Section Positioning --- */
+        .mock-section {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .section-heading {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        /* --- THE PROJECTS SECTION (Placed between Skills and Strengths) --- */
+        #projects-section {
+            background: linear-gradient(180deg, #0b0f19 0%, #111827 50%, #0b0f19 100%);
+            border-top: 1px solid rgba(217, 70, 239, 0.1);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        #projects-section .section-heading {
+            background: linear-gradient(to right, #38bdf8, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #projects-section .section-heading::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #38bdf8, #d946ef);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .project-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .portfolio-card {
+            background: #141b2d;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: neonGlow 6s infinite ease-in-out;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.03) translateY(-5px);
+            border-color: #d946ef;
+        }
+
+        /* Creative Aspect Ratio Media Window */
+        .media-window {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .media-window img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover .media-window img {
+            transform: scale(1.08);
+        }
+
+        /* Beautiful Reveal Overlay */
+        .reveal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11, 15, 25, 0.95) 30%, rgba(217, 70, 239, 0.2) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-card:hover .reveal-overlay {
+            opacity: 1;
+        }
+
+        .action-badge {
+            background: linear-gradient(135deg, #38bdf8 0%, #d946ef 100%);
+            color: #fff;
+            padding: 10px 22px;
+            font-weight: 600;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.4);
+            transform: translateY(15px);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover .action-badge {
+            transform: translateY(0);
+        }
+
+        .card-details {
+            padding: 24px;
+            background: #141b2d;
+        }
+
+        .card-details h3 {
+            font-size: 1.35rem;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+
+        .card-details p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- Immersive Cinematic Modal Layout --- */
+        .cinematic-backdrop {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 9, 15, 0.96);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+        }
+
+        .video-wrapper-frame {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            background: #000;
+            border-radius: 14px;
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .video-wrapper-frame video {
+            width: 100%;
+            max-height: 75vh;
+            display: block;
+        }
+
+        .exit-modal-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #94a3b8;
+            font-size: 2.8rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .exit-modal-btn:hover {
+            color: #f43f5e;
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .exit-modal-btn {
+                top: 15px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.6);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. SKILLS SECTION -->
+    <section class="container">
+        <h2 class="section-heading" style="color: #64748b;">[ [ Skills Section Placeholder ] ]</h2>
+        <div class="mock-section">Your skills list stays directly right here...</div>
+    </section>
+
+    <!-- 2. NEW INTERACTIVE PROJECTS SECTION (Placed Perfectly In-Between) -->
+    <section id="projects-section">
+        <div class="container">
+            <h2 class="section-heading">My Projects</h2>
+            
+            <div class="project-cards-grid">
+                
+                <!-- Card 1: Main Autonomous Navigation -->
+                <div class="portfolio-card" onclick="launchVideoViewer('VID-20260417-WA0001.mp4')">
+                    <div class="media-window">
+                        <!-- References your exact project photo file name -->
+                        <img src="image-1775984100403.jpg" alt="Obstacle Avoiding Robot Architecture">
+                        <div class="reveal-overlay">
+                            <span class="action-badge">▶ View Autonomous Walk</span>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <h3>Obstacle Avoiding Robot (Testing)</h3>
+                        <p>An intelligent obstacle navigation tracking platform engineered on Arduino. Click to view execution testing loops.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Micro-Controller Hardware Breakdown -->
+                <div class="portfolio-card" onclick="launchVideoViewer('VID_20260417_133831.mp4')">
+                    <div class="media-window">
+                        <!-- References your exact circuit photo file name -->
+                        <img src="IMG_20260411_001544.jpg" alt="Motor Shield Hardware Mapping">
+                        <div class="reveal-overlay">
+                            <span class="action-badge">▶ View Circuit Assembly</span>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <h3>Chassis & Shield Integration</h3>
+                        <p>Close-up structure of structural module interfaces, power distribution networks, and telemetry systems mapping.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. STRENGTHS SECTION -->
+    <section class="container">
+        <h2 class="section-heading" style="color: #64748b;">[ [ Strengths Section Placeholder ] ]</h2>
+        <div class="mock-section">Your strengths list and personal profiles sit right here...</div>
+    </section>
+
+    <!-- Fluid Cinematic Media Viewer Frame Popup -->
+    <div id="videoModalViewer" class="cinematic-backdrop" onclick="terminateVideoViewer()">
+        <div class="video-wrapper-frame" onclick="event.stopPropagation()">
+            <span class="exit-modal-btn" onclick="terminateVideoViewer()">&times;</span>
+            <video id="renderingEngine" controls>
+                <source id="mediaStreamTarget" src="" type="video/mp4">
+                Your system does not support native web video rendering.
+            </video>
+        </div>
+    </div>
+
+    <!-- Script Application Layer -->
+    <script>
+        const backdropWindow = document.getElementById('videoModalViewer');
+        const embeddedVideo = document.getElementById('renderingEngine');
+        const dataPipelineSource = document.getElementById('mediaStreamTarget');
+
+        // Dynamically shifts global video pipeline and opens display modal
+        function launchVideoViewer(targetVideoFile) {
+            dataPipelineSource.src = targetVideoFile;
+            embeddedVideo.load();
+            backdropWindow.style.display = 'flex';
+            
+            // Allows thread window space to finish compiling source allocation smoothly
+            setTimeout(() => {
+                embeddedVideo.play().catch(() => {
+                    console.log("Audio playback held pending direct interactive focus confirmation.");
+                });
+            }, 80);
+        }
+
+        // Suspends active media streams cleanly
+        function terminateVideoViewer() {
+            backdropWindow.style.display = 'none';
+            embeddedVideo.pause();
+            embeddedVideo.currentTime = 0;
+            dataPipelineSource.src = "";
+        }
+    </script>
+</body>
+</html>
